@@ -1,42 +1,45 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: #282c34;
+  padding: 10px;
+  color: white;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+nav a {
+  color: rgb(230, 230, 230);
+  text-decoration: none;
+  padding: 12px 16px;
+}
+nav a:hover {
+  background-color: #4e737d;
+  color: rgb(0, 0, 0);
+  border-radius: 4px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.jordy-image {
+  max-width: 300px;
+  height: auto;
+  border-radius: 20px;
 }
 
-.card {
-  padding: 2em;
+.skill-card i {
+  font-size: 3em;
+  color: #b2b096;
 }
-
-.read-the-docs {
-  color: #888;
+.skill-card p {
+  margin: 0;
+  font-size: 1.2em;
+  color: #333;
 }
