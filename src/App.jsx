@@ -1,5 +1,5 @@
 import './App.css'
-import jordyImg from './assets/jordy-image.jpeg'
+import jordyImg from './assets/jordycolor.png'
 
 function App() {
   return (
@@ -7,16 +7,18 @@ function App() {
       <header className="header">
         <nav>
           <ul>
-            <li><a href="#about">About me</a></li>
+            <li><a href="#about-section">About me</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
       </header>
-      <section id='about'>
-        <h2>About Me</h2>
-        <p>Welcome to my portfolio! I'm Jordy, a passionate developer with experience in various technologies.</p>
+      <section id='about-section'>
+        <div className='about-text-container'>        
+          <h2>Hi There!</h2>
+          <p>Welcome to my portfolio! I'm Jordy, a passionate developer with experience in various technologies.</p>
+        </div>
         <img src={jordyImg} className='jordy-image' alt="Jordy Image" />
       </section>
       <section id='skills'>
