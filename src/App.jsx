@@ -8,17 +8,18 @@ function App() {
         <nav>
           <ul>
             <li><a href="#about-section">About me</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#skills-section">Skills</a></li>
+            <li><a href="#projects-section">Projects</a></li>
+            <li><a href="#contact-section">Contact</a></li>
           </ul>
         </nav>
       </header>
       <section id='about-section'>
         <div className='about-text-container'>        
-          <h2>Hi,</h2>
-          <h2>I'm Jordy,</h2>
-          <h2>Front-end developer</h2>
+          <h2>Hi, <br />
+          I'm Jordy, <br /> 
+          Front-end developer
+          </h2>
           <p>
             Passionate about building responsive, user-friendly websites and apps. 
             Skilled in HTML, CSS, JavaScript, React, and SQL, 

@@ -4,19 +4,18 @@ body {
   padding: 0;
 }
 
+/* HEADER STYLES MOBILE */
 .header {
   background-color: #282c34;
   padding: 10px 0;
   color: white;
 }
-
 nav ul {
   list-style: none;
   padding: 0;
   display: flex;
   justify-content: space-evenly;
 }
-
 nav a {
   color: rgb(230, 230, 230);
   text-decoration: none;
@@ -28,8 +27,16 @@ nav a:hover {
   color: rgb(0, 0, 0);
   border-radius: 4px;
 }
+/* HEADER STYLES DESKTOP */
+@media screen and (min-width: 768px) {
+  nav ul {
+    justify-content: flex-end;
+    gap: 40px;
+    padding-right: 20px;
+  }
+}
 
-
+/* ABOUT SECTION STYLES MOBILE */
 #about-section {
   background-color: #4e737d;
   display: flex;
@@ -44,11 +51,12 @@ nav a:hover {
   width: 80%;
 }
 #about-section h2 {
-  font-size: 3em;
-  margin: 0 0 10px 0;
+  font-size: 2.5em;
+  margin: 0 0 20px 0;
 }
 #about-section p {
   font-size: 1.1em;
+  line-height: 25px;
   margin: 0;
 }
 .buttons-container {
@@ -69,30 +77,30 @@ nav a:hover {
   background-color: #ffffff;
   color: #000000;
 }
-
 .jordy-image {
   width: 50%;
-  max-width: 250px;
+  max-width: 300px;
   border-radius: 50%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
-
+/* ABOUT SECTION STYLES DESKTOP */
 @media screen and (min-width: 768px) {
-  nav ul {
-    justify-content: flex-end;
-    gap: 20px;
-    padding-right: 20px;
+  #about-section {
+    height: calc(100vh - 130px);
+  }
+  #about-section h2 {
+  font-size: 3em;
   }
   .about-text-container {
-    width: 50%;
+    width: 40%;
   }
   .buttons-container {
-    gap: 80px;
+    gap: 10%;
   }
 }
 
 
-
+/* SKILLS SECTION STYLES MOBILE */
 .skill-card i {
   font-size: 3em;
   color: #b2b096;
