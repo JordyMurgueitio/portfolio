@@ -178,4 +178,90 @@ nav a:hover {
 }
 
 
+/* PROJECTS SECTION STYLES MOBILE */
 
+#projects-section {
+  background-color: #292d2e;
+  padding: 30px 0px;
+}
+.projects-header {
+  color: #fff;
+  width: 80%;
+  margin: 0 auto 30px auto;
+}
+.projects-header h2 {
+  margin: 0 0 20px 0;
+  font-size: 2.5em;
+}
+.projects-header p {
+  margin: 0;
+  font-size: 1.1em;
+  line-height: 25px;
+}
+.projects-container {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 20px;
+}
+.project-box {
+  border: 1px solid #f0f2f2;
+  background-color: #4e737d;
+  width: 100%;
+  max-width: 350px;
+  padding: 0px 0 20px 0;
+  border-radius: 8px;
+  text-align: center;
+}
+.project-box:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.project-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px 8px 0 0;
+}
+.project-title {
+  margin: 15px 0 30px 0;
+  font-size: 1.5em;
+  color: #ffffff;
+}
+.project-link {
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  background-color:#292d2e;
+  text-decoration: none;
+  padding: 10px 15px;
+  font-size: 1.1em;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+.project-link:hover {
+  background-color:#ffffff;
+  color: #000000;
+}
+/* PROJECTS SECTION STYLES DESKTOP */
+@media screen and (min-width: 768px) {
+  #projects-section {
+    padding: 50px 0;
+  }
+  .projects-header {
+    width: 65%;
+    margin: 0 auto 50px auto;
+  }
+  .projects-header h2 {
+    margin: 0 0 20px 0;
+    font-size: 3em;
+  }
+  .projects-header p {
+    width: 70%;
+  }
+  .projects-container {
+    width: 65%;
+  }
+  .project-box {
+    max-width: 420px;
+  }
+}
