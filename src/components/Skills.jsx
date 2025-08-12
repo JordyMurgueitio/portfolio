@@ -1,7 +1,7 @@
 function Skills () {
     return (
         <section id='skills-section'>
-            <div className='skills-text-container'>
+            <div className='skills-header'>
                 <h2>Skills</h2>
                 <p>
                     Here are some of the technologies I've worked with but I also have experience with tools like

@@ -105,17 +105,17 @@ nav a:hover {
   background-color: #292d2e;
   padding: 30px 0px;
 }
-.skills-text-container {
+.skills-header {
   color: #fff;
   width: 80%;
   margin: 0 auto 30px auto;
 }
-.skills-text-container h2 {
+.skills-header h2 {
   color: #fff;
   margin: 0 0 20px 0;
   font-size: 2.5em;
 }
-.skills-text-container p {
+.skills-header p {
   color: #fff;
   margin: 0;
   font-size: 1.1em;
@@ -158,34 +158,24 @@ nav a:hover {
   #skills-section {
     padding: 20px 0;
   }
-  .skills-text-container {
+  .skills-header {
   width: 65%;
   margin: 0 auto 50px auto;
+  }
+  .skills-header h2 {
+    margin: 0 0 20px 0;
+    font-size: 3em;
+  }
+  .skills-header p {
+    width: 70%;
+  }
+  .skills-container {
+    width: 65%;
+  }
+  .skill-card {
+    max-width: 200px;
+  }
 }
-.skills-text-container h2 {
-  margin: 0 0 20px 0;
-  font-size: 3em;
-}
-.skills-text-container p {
-  width: 70%;
-}
-.skills-container {
-  width: 65%;
-}
-.skill-card {
-  max-width: 200px;
-}
-.skill-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-.skill-card i {
-  font-size: 4em;
-  color:#ddddde;
-  margin-bottom: 30px;
-}
-.skill-card p {
-  margin: 0;
-  font-size: 1.3em;
-}
-}
+
+
+
