@@ -1,7 +1,13 @@
 function Skills () {
     return (
         <section id='skills-section'>
-            <h2>Skills</h2>
+            <div className='skills-text-container'>
+                <h2>Skills</h2>
+                <p>
+                    Here are some of the technologies I've worked with but I also have experience with tools like
+                    Figma, Postman, GitHub, AWS, Braze (CRM), and more.
+                </p>
+            </div>
             <div className='skills-container'>
                 <div className='skill-card'>
                     <i className="fa fa-html5"></i>
