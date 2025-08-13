@@ -103,12 +103,13 @@ nav a:hover {
 /* SKILLS SECTION STYLES MOBILE */
 #skills-section {
   background-color: #292d2e;
-  padding: 30px 0px;
+  padding: 50px 0;
 }
 .skills-header {
   color: #fff;
   width: 80%;
-  margin: 0 auto 30px auto;
+  margin: 0 auto 40px auto;
+  text-align: center;
 }
 .skills-header h2 {
   color: #fff;
@@ -126,16 +127,16 @@ nav a:hover {
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
   gap: 20px;
 }
 .skill-card {
   background-color: #4e737d;
-  border: 1px solid #282c34;
+  border: 1px solid #292d2e;
   color: #ffffff;
   width: 100%;
-  max-width: 150px;
-  padding: 50px 0;
+  max-width: 100px;
+  padding: 30px 0;
   border-radius: 8px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -147,7 +148,7 @@ nav a:hover {
 .skill-card i {
   font-size: 4em;
   color:#ddddde;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 .skill-card p {
   margin: 0;
@@ -156,24 +157,19 @@ nav a:hover {
 /* SKILLS SECTION STYLES DESKTOP */
 @media screen and (min-width: 768px) {
   #skills-section {
-    padding: 20px 0;
+    padding: 60px 0;
   }
   .skills-header {
-  width: 65%;
-  margin: 0 auto 50px auto;
+    width: 60%;
+    margin: 0 auto 50px auto;
   }
   .skills-header h2 {
     margin: 0 0 20px 0;
     font-size: 3em;
   }
-  .skills-header p {
-    width: 70%;
-  }
   .skills-container {
-    width: 65%;
-  }
-  .skill-card {
-    max-width: 200px;
+    width: 70%;
+    justify-content: space-evenly;
   }
 }
 
@@ -182,12 +178,13 @@ nav a:hover {
 
 #projects-section {
   background-color: #292d2e;
-  padding: 30px 0px;
+  padding: 50px 0px;
 }
 .projects-header {
   color: #fff;
   width: 80%;
-  margin: 0 auto 30px auto;
+  margin: 0 auto 40px auto;
+  text-align: center;
 }
 .projects-header h2 {
   margin: 0 0 20px 0;
@@ -203,7 +200,7 @@ nav a:hover {
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
   gap: 20px;
 }
 .project-box {
@@ -245,7 +242,7 @@ nav a:hover {
 /* PROJECTS SECTION STYLES DESKTOP */
 @media screen and (min-width: 768px) {
   #projects-section {
-    padding: 50px 0;
+    padding: 40px 0;
   }
   .projects-header {
     width: 65%;
@@ -255,13 +252,11 @@ nav a:hover {
     margin: 0 0 20px 0;
     font-size: 3em;
   }
-  .projects-header p {
-    width: 70%;
-  }
   .projects-container {
     width: 65%;
+    gap: 50px;
   }
   .project-box {
-    max-width: 420px;
+    max-width: 300px;
   }
 }
