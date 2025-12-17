@@ -1,31 +1,26 @@
 import weather from '../assets/weather-app.png'
-import filmFinder from '../assets/film-app.png'
 
 function Projects() {
     const projects = [
-        {
-            title: "Film Finder",
-            description: "A responsive movie discovery application built with React. Features movie search, detailed information display, and responsive design.",
-            techStack: ["React", "JavaScript", "CSS", "API Integration"],
-            image: filmFinder,
-            liveUrl: "https://jordymurgueitio.github.io/film-finder-app/",
-            githubUrl: "https://github.com/JordyMurgueitio/film-finder-app"
-        },
         {
             title: "Weather App",
             description: "Real-time weather application with location-based forecasts. Clean UI with dynamic weather data and responsive design.",
             techStack: ["HTML", "CSS", "JavaScript", "Weather API"],
             image: weather,
             liveUrl: "https://jordymurgueitio.github.io/weather-app/",
-            githubUrl: "https://github.com/JordyMurgueitio/weather-app"
+            githubUrl: "https://github.com/JordyMurgueitio/weather-app",
+            status: "live",
+            year: "2024"
         },
         {
             title: "Todo App",
             description: "Task management application built with React. Features add, edit, delete functionality with local storage persistence.",
             techStack: ["React", "JavaScript", "CSS", "Local Storage"],
-            image: null, // We'll add a placeholder or you can add an image later
-            liveUrl: "#", // Update with actual URL when deployed
-            githubUrl: "#" // Update with actual GitHub URL
+            image: null,
+            liveUrl: "#",
+            githubUrl: "#",
+            status: "development",
+            year: "2024"
         }
     ];
 
@@ -33,12 +28,22 @@ function Projects() {
         <section id='projects-section'>
             <div className="projects-header">
                 <h2>Featured Projects</h2>
-                <p>A selection of projects showcasing my development skills and problem-solving abilities:</p>
+                <p>Real-world applications built to solve problems and create better user experiences</p>
+                <div className="filter-tags">
+                    <span className="filter-tag active">All Projects</span>
+                    <span className="filter-tag">Web Apps</span>
+                    <span className="filter-tag">React</span>
+                </div>
             </div>
             <div className="projects-container">
                 {projects.map((project, index) => (
                     <div key={index} className={`project-box project-${index + 1}`}>
-                        <div className="project-number">0{index + 1}</div>
+                        <div className="project-badges">
+                            <div className="project-number">0{index + 1}</div>
+                            <div className={`project-status status-${project.status}`}>
+                                {project.status === 'live' ? '● Live' : '● In Progress'}
+                            </div>
+                        </div>
                         {project.image ? (
                             <div className="project-image-wrapper">
                                 <img className="project-image" src={project.image} alt={project.title} />
@@ -54,7 +59,10 @@ function Projects() {
                             </div>
                         )}
                         <div className="project-content">
-                            <h5 className="project-title">{project.title}</h5>
+                            <div className="project-header-info">
+                                <h5 className="project-title">{project.title}</h5>
+                                <span className="project-year">{project.year}</span>
+                            </div>
                             <p className="project-description">{project.description}</p>
                             <div className="tech-stack">
                                 {project.techStack.map((tech, techIndex) => (
@@ -63,15 +71,25 @@ function Projects() {
                             </div>
                             <div className="project-links">
                                 <a className="project-link" href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                                    <i className="fa fa-external-link"></i> Live Demo
+                                    <i className="fa fa-external-link"></i> 
+                                    <span>Live Demo</span>
                                 </a>
                                 <a className="project-link github-link" href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                                    <i className="fa fa-github"></i> Code
+                                    <i className="fa fa-github"></i> 
+                                    <span>View Code</span>
                                 </a>
                             </div>
                         </div>
                     </div>
                 ))}
+            </div>
+            
+            <div className="projects-cta">
+                <p>More projects coming soon as I continue building and learning!</p>
+                <a href="https://github.com/JordyMurgueitio" target="_blank" rel="noopener noreferrer" className="view-all-btn">
+                    <i className="fa fa-github"></i>
+                    <span>View All on GitHub</span>
+                </a>
             </div>
         </section>
     );
