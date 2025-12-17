@@ -498,6 +498,7 @@ nav a:hover {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 12px;
   transition: all 0.3s ease;
+  margin-bottom: 12px;
 }
 
 .skill-icon i {
@@ -506,61 +507,13 @@ nav a:hover {
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
-.skill-info {
-  text-align: center;
-  width: 100%;
-}
-
 .skill-name {
-  margin: 0 0 8px 0;
+  margin: 0;
   font-size: 1em;
   font-weight: 600;
   color: #ffffff;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.skill-level {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-  height: 4px;
-}
-
-.level-indicator {
-  flex: 1;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 2px;
-  position: relative;
-  overflow: hidden;
-}
-
-.level-indicator::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  background: #ffffff;
-  border-radius: 2px;
-  transition: width 0.6s ease;
-}
-
-/* Skill proficiency levels */
-.skill-advanced .level-indicator::after {
-  width: 85%;
-  background: linear-gradient(90deg, #00d4aa, #00f2b8);
-}
-
-.skill-intermediate .level-indicator::after {
-  width: 65%;
-  background: linear-gradient(90deg, #667eea, #764ba2);
-}
-
-.skill-beginner .level-indicator::after {
-  width: 40%;
-  background: linear-gradient(90deg, #f093fb, #f5576c);
+  text-align: center;
 }
 
 .skills-footer {
