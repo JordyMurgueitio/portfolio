@@ -6,13 +6,14 @@ function About () {
                 <h2>
                     Hi, <br />
                     I'm Jordy, <br /> 
-                    Front-end developer
+                    Full-Stack Developer
                 </h2>
                 <p>
-                    Passionate about building responsive, user-friendly websites and apps. 
-                    Skilled in HTML, CSS, JavaScript, React, and SQL, 
-                    I focus on creating smooth, functional experiences that look great and work seamlessly. 
-                    I enjoy solving problems, refining details, and bringing ideas to life through clean, efficient code.
+                    Professional developer with over a year of experience building web applications, email templates, 
+                    and internal tools. Currently working as a Support Developer, specializing in Vue.js and Express.js 
+                    applications, database querying, and code debugging. Previously worked as an HTML Developer for CRM teams, 
+                    creating responsive email campaigns. I'm passionate about solving complex problems, optimizing user experiences, 
+                    and building scalable solutions that make a real impact.
                 </p>
                 <div className='buttons-container'>
                     <a href="#contact">Contact Me</a>
