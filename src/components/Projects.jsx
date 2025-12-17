@@ -37,12 +37,20 @@ function Projects() {
             </div>
             <div className="projects-container">
                 {projects.map((project, index) => (
-                    <div key={index} className="project-box">
+                    <div key={index} className={`project-box project-${index + 1}`}>
+                        <div className="project-number">0{index + 1}</div>
                         {project.image ? (
-                            <img className="project-image" src={project.image} alt={project.title} />
+                            <div className="project-image-wrapper">
+                                <img className="project-image" src={project.image} alt={project.title} />
+                                <div className="project-overlay">
+                                    <i className="fa fa-eye"></i>
+                                </div>
+                            </div>
                         ) : (
                             <div className="project-image-placeholder">
-                                <i className="fa fa-code"></i>
+                                <div className="placeholder-icon">
+                                    <i className="fa fa-code"></i>
+                                </div>
                             </div>
                         )}
                         <div className="project-content">

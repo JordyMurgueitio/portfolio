@@ -1,4 +1,25 @@
 function Contact () {
+    const contactMethods = [
+        {
+            name: "GitHub",
+            icon: "fa fa-github",
+            url: "https://github.com/JordyMurgueitio",
+            description: "View my code"
+        },
+        {
+            name: "LinkedIn", 
+            icon: "fa fa-linkedin",
+            url: "https://www.linkedin.com/in/jordy-murgueitio/",
+            description: "Let's connect"
+        },
+        {
+            name: "Email",
+            icon: "fa fa-envelope", 
+            url: "mailto:your.email@example.com",
+            description: "Send a message"
+        }
+    ];
+
     const handleDownloadCV = () => {
         // Create a simple text-based CV content
         const cvContent = `
@@ -62,22 +83,60 @@ EDUCATION & CERTIFICATIONS
 
     return (
         <section id="contact-section">
-            <h2>Get In Touch</h2>
-            <p>Ready to bring your next project to life? Let's connect and discuss how I can contribute to your team!</p>
-            <div className="contact-container">
-                <a href="https://github.com/JordyMurgueitio" target="_blank" rel="noopener noreferrer" title="GitHub">
-                    <i className="fa fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/jordy-murgueitio/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-                    <i className="fa fa-linkedin"></i>
-                </a>
-                <a href="mailto:your.email@example.com" title="Email">
-                    <i className="fa fa-envelope"></i>
-                </a>
+            <div className="contact-content">
+                <div className="contact-header">
+                    <h2>Let's Work Together</h2>
+                    <p>Ready to bring your next project to life? I'm always interested in discussing new opportunities and exciting challenges.</p>
+                </div>
+                
+                <div className="contact-grid">
+                    <div className="contact-info">
+                        <h3>Get In Touch</h3>
+                        <div className="contact-methods">
+                            {contactMethods.map((method, index) => (
+                                <a 
+                                    key={index}
+                                    href={method.url} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="contact-method"
+                                >
+                                    <div className="contact-icon">
+                                        <i className={method.icon}></i>
+                                    </div>
+                                    <div className="contact-details">
+                                        <span className="contact-name">{method.name}</span>
+                                        <span className="contact-description">{method.description}</span>
+                                    </div>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                    
+                    <div className="contact-cta">
+                        <div className="availability-status">
+                            <div className="status-indicator"></div>
+                            <span>Available for new projects</span>
+                        </div>
+                        
+                        <div className="quick-stats">
+                            <div className="stat">
+                                <span className="stat-number">24h</span>
+                                <span className="stat-label">Response time</span>
+                            </div>
+                            <div className="stat">
+                                <span className="stat-number">1+</span>
+                                <span className="stat-label">Years experience</span>
+                            </div>
+                        </div>
+                        
+                        <button className="download-cv-button" onClick={handleDownloadCV}>
+                            <i className="fa fa-download"></i> 
+                            <span>Download Resume</span>
+                        </button>
+                    </div>
+                </div>
             </div>
-            <button className="download-cv-button" onClick={handleDownloadCV}>
-                <i className="fa fa-download"></i> Download CV
-            </button>
         </section>
     );
 }

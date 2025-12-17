@@ -42,6 +42,7 @@ function About () {
                 </div>
                 <div className='hero-image-container'>
                     <div className='image-backdrop'></div>
+                    <div className='image-glow'></div>
                     <img src={jordyImg} className='hero-image' alt="Jordy Murgueitio - Full-Stack Developer" />
                 </div>
             </div>

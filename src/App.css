@@ -88,6 +88,8 @@ nav a:hover {
   z-index: 1;
 }
 
+
+
 .hero-container {
   display: flex;
   flex-direction: column;
@@ -237,21 +239,36 @@ nav a:hover {
   z-index: 1;
 }
 
+.image-glow {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  right: -30px;
+  bottom: -30px;
+  background: linear-gradient(45deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+  border-radius: 50%;
+  z-index: 0;
+  opacity: 0.6;
+}
+
 .hero-image {
   width: 280px;
   height: 280px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid rgba(255, 255, 255, 0.2);
+  border: 4px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   z-index: 2;
   position: relative;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .hero-image:hover {
   transform: scale(1.05);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
 }
+
+
 
 @keyframes slideInLeft {
   from {
@@ -819,6 +836,19 @@ nav a:hover {
   animation: fadeInUp 0.8s ease-out;
   animation-delay: 0.2s;
   animation-fill-mode: backwards;
+  position: relative;
+}
+
+.project-1 {
+  animation-delay: 0.2s;
+}
+
+.project-2 {
+  animation-delay: 0.4s;
+}
+
+.project-3 {
+  animation-delay: 0.6s;
 }
 
 .project-box:hover {
@@ -826,6 +856,64 @@ nav a:hover {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   background: rgba(255, 255, 255, 0.25);
   border-color: rgba(255, 255, 255, 0.4);
+}
+
+.project-number {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #4e737d;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  z-index: 3;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.project-image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(78, 115, 125, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.project-overlay i {
+  font-size: 2.5em;
+  color: #ffffff;
+  transform: scale(0);
+  transition: transform 0.3s ease 0.1s;
+}
+
+/* Only enable hover effects on devices that support true hover */
+@media (hover: hover) and (pointer: fine) {
+  .project-box:hover .project-overlay {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .project-box:hover .project-overlay i {
+    transform: scale(1);
+  }
 }
 
 .project-image, .project-image-placeholder {
@@ -842,6 +930,13 @@ nav a:hover {
   color: #fff;
   font-size: 3.5em;
   backdrop-filter: blur(5px);
+  position: relative;
+  overflow: hidden;
+}
+
+.placeholder-icon {
+  z-index: 2;
+  position: relative;
 }
 
 .project-content {
@@ -1006,78 +1101,188 @@ nav a:hover {
   z-index: 1;
 }
 
-#contact-section h2 {
-  color: #fff;
+.contact-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.contact-header {
   text-align: center;
+  margin-bottom: 50px;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.contact-header h2 {
+  color: #fff;
   font-size: 2.8em;
   margin: 0 0 20px 0;
   font-weight: 700;
   letter-spacing: -0.02em;
-  position: relative;
-  z-index: 2;
-  animation: fadeInUp 0.8s ease-out;
 }
 
-#contact-section p {
+.contact-header p {
   color: rgba(255, 255, 255, 0.9);
-  text-align: center;
   font-size: 1.2em;
   line-height: 1.7;
-  margin: 0 0 50px 0;
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 50px;
-  position: relative;
-  z-index: 2;
-  animation: fadeInUp 0.8s ease-out;
-  animation-delay: 0.1s;
-  animation-fill-mode: backwards;
+  margin: 0 auto;
 }
 
-.contact-container {
-  width: 90%;
-  margin: 0 auto 50px auto;
+.contact-grid {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 25px;
-  position: relative;
-  z-index: 2;
+  flex-direction: column;
+  gap: 40px;
   animation: fadeInUp 0.8s ease-out;
   animation-delay: 0.2s;
   animation-fill-mode: backwards;
 }
 
-.contact-container a {
-  color: #ffffff;
-  text-decoration: none;
-  padding: 22px;
+.contact-info h3 {
+  color: #fff;
+  font-size: 1.6em;
+  margin: 0 0 25px 0;
+  font-weight: 600;
+  text-align: center;
+}
+
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-method {
+  display: flex;
+  align-items: center;
+  padding: 20px;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  font-size: 2.8em;
-  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  text-decoration: none;
+  color: #fff;
   transition: all 0.3s ease;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-.contact-container a:hover {
-  background: rgba(255, 255, 255, 0.9);
-  color: #4e737d;
-  border-color: rgba(255, 255, 255, 0.9);
-  transform: translateY(-8px);
+.contact-method:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-5px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
 }
-.download-cv-button {
-  display: block;
-  width: 70%;
-  max-width: 320px;
-  margin: 0 auto;
-  color: #ffffff;
+
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.contact-icon i {
+  font-size: 1.4em;
+  color: #fff;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-name {
+  font-weight: 600;
+  font-size: 1.1em;
+  margin-bottom: 5px;
+}
+
+.contact-description {
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+.contact-cta {
+  text-align: center;
+  padding: 30px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.availability-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  color: #fff;
+  font-weight: 500;
+}
+
+.status-indicator {
+  width: 12px;
+  height: 12px;
+  background: #00d4aa;
+  border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.7);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 0 10px rgba(0, 212, 170, 0);
+  }
+}
+
+.quick-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 5px;
+}
+.download-cv-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  color: #ffffff;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   padding: 16px 32px;
   font-size: 1.1em;
   border-radius: 12px;
@@ -1086,10 +1291,18 @@ nav a:hover {
   font-weight: 600;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   position: relative;
-  z-index: 2;
-  animation: fadeInUp 0.8s ease-out;
-  animation-delay: 0.3s;
-  animation-fill-mode: backwards;
+  overflow: hidden;
+}
+
+.download-cv-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
 }
 
 .download-cv-button:hover {
@@ -1097,11 +1310,11 @@ nav a:hover {
   color: #4e737d;
   border-color: rgba(255, 255, 255, 0.9);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-  transform: translateY(-5px);
+  transform: translateY(-3px);
 }
 
-.download-cv-button i {
-  margin-right: 10px;
+.download-cv-button:hover::before {
+  left: 100%;
 }
 
 /* CONTACT SECTION STYLES DESKTOP */
@@ -1110,29 +1323,73 @@ nav a:hover {
     padding: 100px 40px;
   }
   
-  #contact-section h2 {
+  .contact-header h2 {
     font-size: 3.5em;
     margin: 0 0 25px 0;
   }
   
-  #contact-section p {
+  .contact-header p {
     font-size: 1.3em;
-    margin-bottom: 60px;
   }
   
-  .contact-container {
-    margin-bottom: 60px;
-    gap: 35px;
+  .contact-grid {
+    flex-direction: row;
+    gap: 60px;
+    align-items: flex-start;
   }
   
-  .contact-container a {
-    padding: 28px;
-    font-size: 3.2em;
+  .contact-info {
+    flex: 1;
+  }
+  
+  .contact-info h3 {
+    text-align: left;
+    font-size: 1.8em;
+  }
+  
+  .contact-method {
+    padding: 25px;
+  }
+  
+  .contact-icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+  }
+  
+  .contact-icon i {
+    font-size: 1.6em;
+  }
+  
+  .contact-name {
+    font-size: 1.2em;
+  }
+  
+  .contact-description {
+    font-size: 1em;
+  }
+  
+  .contact-cta {
+    flex: 1;
+    max-width: 400px;
+    padding: 40px;
+  }
+  
+  .quick-stats {
+    margin-bottom: 40px;
+  }
+  
+  .stat-number {
+    font-size: 2.2em;
+  }
+  
+  .stat-label {
+    font-size: 1em;
   }
   
   .download-cv-button {
     font-size: 1.2em;
-    padding: 20px 40px;
-    max-width: 350px;
+    padding: 18px 36px;
+    max-width: 320px;
   }
 }
