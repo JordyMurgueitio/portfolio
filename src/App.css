@@ -1521,31 +1521,17 @@ nav a:hover {
   }
 }
 
-.quick-stats {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 30px;
-  gap: 20px;
+.contact-message {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1em;
+  line-height: 1.6;
+  margin: 25px 0 30px 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  border-left: 3px solid rgba(102, 126, 234, 0.6);
 }
 
-.stat {
-  text-align: center;
-}
-
-.stat-number {
-  display: block;
-  font-size: 1.8em;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1;
-}
-
-.stat-label {
-  display: block;
-  font-size: 0.9em;
-  color: rgba(255, 255, 255, 0.8);
-  margin-top: 5px;
-}
 .download-cv-button {
   display: flex;
   align-items: center;
@@ -1650,16 +1636,10 @@ nav a:hover {
     padding: 40px;
   }
   
-  .quick-stats {
-    margin-bottom: 40px;
-  }
-  
-  .stat-number {
-    font-size: 2.2em;
-  }
-  
-  .stat-label {
-    font-size: 1em;
+  .contact-message {
+    font-size: 1.05em;
+    padding: 24px;
+    margin: 30px 0 35px 0;
   }
   
   .download-cv-button {

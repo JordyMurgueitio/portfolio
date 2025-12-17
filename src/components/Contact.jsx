@@ -116,19 +116,13 @@ EDUCATION & CERTIFICATIONS
                     <div className="contact-cta">
                         <div className="availability-status">
                             <div className="status-indicator"></div>
-                            <span>Available for new projects</span>
+                            <span>Available for new opportunities</span>
                         </div>
                         
-                        <div className="quick-stats">
-                            <div className="stat">
-                                <span className="stat-number">24h</span>
-                                <span className="stat-label">Response time</span>
-                            </div>
-                            <div className="stat">
-                                <span className="stat-number">1+</span>
-                                <span className="stat-label">Years experience</span>
-                            </div>
-                        </div>
+                        <p className="contact-message">
+                            I'm currently open to junior to mid-level full-stack or front-end developer positions. 
+                            Feel free to reach out through any of the channels listed.
+                        </p>
                         
                         <button className="download-cv-button" onClick={handleDownloadCV}>
                             <i className="fa fa-download"></i> 
