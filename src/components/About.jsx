@@ -9,14 +9,12 @@ function About () {
                     <div className='hero-greeting'>
                         <span className='greeting-text'>Hello, I'm</span>
                         <h1 className='hero-name'>Jordy Murgueitio</h1>
-                        <h2 className='hero-title'>Full-Stack Developer</h2>
+                        <h2 className='hero-title'>Support Developer</h2>
                     </div>
                     <p className='hero-description'>
                         Professional developer with over a year of experience building web applications, email templates, 
-                        and internal tools. Currently working as a Support Developer, specializing in <strong>Vue.js</strong> and <strong>Express.js</strong> 
-                        applications, database querying, and code debugging. Previously worked as an HTML Developer for CRM teams, 
-                        creating responsive email campaigns. I'm passionate about solving complex problems, optimizing user experiences, 
-                        and building scalable solutions that make a real impact.
+                        and internal tools. Currently working as a Support Developer, specializing in <strong>React, </strong><strong>Vue.js</strong> and <strong>Express.js </strong> 
+                        applications, database querying, and code debugging. 
                     </p>
                     <div className='hero-actions'>
                         <a href="#contact" className='btn btn-primary'>
@@ -31,10 +29,6 @@ function About () {
                         <div className='stat-item'>
                             <span className='stat-number'>1+</span>
                             <span className='stat-label'>Years Experience</span>
-                        </div>
-                        <div className='stat-item'>
-                            <span className='stat-number'>3+</span>
-                            <span className='stat-label'>Projects Built</span>
                         </div>
                         <div className='stat-item'>
                             <span className='stat-number'>9+</span>

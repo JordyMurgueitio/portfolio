@@ -4,7 +4,7 @@
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(40, 44, 52, 0.95);
+  background: rgba(106, 115, 135, 0.95);
   backdrop-filter: blur(10px);
   padding: 10px 0;
   color: white;
@@ -43,7 +43,7 @@ nav a::after {
   transform: translateX(-50%) scaleX(0);
   width: 70%;
   height: 2px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: linear-gradient(90deg, #667eea, #667eea);
   border-radius: 2px;
   transition: transform 0.3s ease;
 }
