@@ -1,4 +1,4 @@
-import './App.css'
+import './global.css'
 import Header from './components/Header'
 import About from './components/About'
 import Skills from './components/Skills'

@@ -1,4 +1,6 @@
 import jordyImg from '../assets/Jordycolor.png'
+import './About.css';
+
 function About () {
     return (
         <section id='about-section'>

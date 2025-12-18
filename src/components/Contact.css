@@ -1,0 +1,291 @@
+/* CONTACT SECTION STYLES MOBILE */
+#contact-section {
+  background: linear-gradient(135deg, #764ba2 0%, #4e737d 100%);
+  padding: 80px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+#contact-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.contact-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 50px;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.contact-header h2 {
+  color: #fff;
+  font-size: 2.8em;
+  margin: 0 0 20px 0;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.contact-header p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2em;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  animation: fadeInUp 0.8s ease-out;
+  animation-delay: 0.2s;
+  animation-fill-mode: backwards;
+}
+
+.contact-info h3 {
+  color: #fff;
+  font-size: 1.6em;
+  margin: 0 0 25px 0;
+  font-weight: 600;
+  text-align: center;
+}
+
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-method {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.contact-method:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.contact-icon i {
+  font-size: 1.4em;
+  color: #fff;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-name {
+  font-weight: 600;
+  font-size: 1.1em;
+  margin-bottom: 5px;
+}
+
+.contact-description {
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+.contact-cta {
+  text-align: center;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.availability-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  color: #fff;
+  font-weight: 500;
+}
+
+.status-indicator {
+  width: 12px;
+  height: 12px;
+  background: #00d4aa;
+  border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.7);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 0 10px rgba(0, 212, 170, 0);
+  }
+}
+
+.contact-message {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1em;
+  line-height: 1.6;
+  margin: 25px 0 30px 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  border-left: 3px solid rgba(102, 126, 234, 0.6);
+}
+
+.download-cv-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  color: #ffffff;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 16px 32px;
+  font-size: 1.1em;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.download-cv-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.download-cv-button:hover {
+  background: rgba(255, 255, 255, 0.9);
+  color: #4e737d;
+  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  transform: translateY(-3px);
+}
+
+.download-cv-button:hover::before {
+  left: 100%;
+}
+
+/* CONTACT SECTION STYLES DESKTOP */
+@media screen and (min-width: 768px) {
+  #contact-section {
+    padding: 100px 40px;
+  }
+  
+  .contact-header h2 {
+    font-size: 3.5em;
+    margin: 0 0 25px 0;
+  }
+  
+  .contact-header p {
+    font-size: 1.3em;
+  }
+  
+  .contact-grid {
+    flex-direction: row;
+    gap: 60px;
+    align-items: flex-start;
+  }
+  
+  .contact-info {
+    flex: 1;
+  }
+  
+  .contact-info h3 {
+    text-align: left;
+    font-size: 1.8em;
+  }
+  
+  .contact-method {
+    padding: 25px;
+  }
+  
+  .contact-icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+  }
+  
+  .contact-icon i {
+    font-size: 1.6em;
+  }
+  
+  .contact-name {
+    font-size: 1.2em;
+  }
+  
+  .contact-description {
+    font-size: 1em;
+  }
+  
+  .contact-cta {
+    flex: 1;
+    max-width: 400px;
+    padding: 40px;
+  }
+  
+  .contact-message {
+    font-size: 1.05em;
+    padding: 24px;
+    margin: 30px 0 35px 0;
+  }
+  
+  .download-cv-button {
+    font-size: 1.2em;
+    padding: 18px 36px;
+    max-width: 320px;
+  }
+}

@@ -1,3 +1,5 @@
+import './Skills.css';
+
 function Skills () {
     const skillsData = [
         {

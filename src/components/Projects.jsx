@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import weather from '../assets/weather-app.png'
+import './Projects.css';
 // Add your internal tool screenshots/videos here:
 // import supportDashboard from '../assets/support-dashboard.png' (or .gif or .mp4)
 // import crmTool from '../assets/crm-tool.png'

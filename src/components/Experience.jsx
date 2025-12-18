@@ -1,3 +1,5 @@
+import './Experience.css';
+
 function Experience() {
     const experiences = [
         {
