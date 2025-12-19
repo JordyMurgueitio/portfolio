@@ -17,11 +17,11 @@ function About () {
                         collaborating across the stack with <strong>React</strong>, <strong>Vue.js</strong>, <strong>Express.js</strong>, and <strong>SQL</strong> databases to debug and ship production features.
                     </p>
                     <div className='hero-actions'>
-                        <a href="#contact" className='btn btn-primary'>
+                        <a href="#contact-section" className='btn btn-primary'>
                             <span>Get In Touch</span>
                             <i className="fa fa-arrow-right"></i>
                         </a>
-                        <a href="#projects" className='btn btn-secondary'>
+                        <a href="#projects-section" className='btn btn-secondary'>
                             <span>View My Work</span>
                         </a>
                     </div>
