@@ -9,12 +9,12 @@ function About () {
                     <div className='hero-greeting'>
                         <span className='greeting-text'>Hello, I'm</span>
                         <h1 className='hero-name'>Jordy Murgueitio</h1>
-                        <h2 className='hero-title'>Support Developer</h2>
+                        <h2 className='hero-title'>Front-End Developer</h2>
                     </div>
                     <p className='hero-description'>
-                        Professional developer with over a year of experience building web applications, email templates, 
-                        and internal tools. Currently working as a Support Developer, specializing in <strong>React, </strong><strong>Vue.js</strong> and <strong>Express.js </strong> 
-                        applications, database querying, and code debugging. 
+                        Developer with over a year of experience building web applications, internal tools, and email templates. 
+                        Currently working as a Support Developer, 
+                        collaborating across the stack with <strong>React</strong>, <strong>Vue.js</strong>, <strong>Express.js</strong>, and <strong>SQL</strong> databases to debug and ship production features.
                     </p>
                     <div className='hero-actions'>
                         <a href="#contact" className='btn btn-primary'>
