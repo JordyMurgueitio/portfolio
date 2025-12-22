@@ -44,8 +44,7 @@ function Skills () {
             <div className='skills-header'>
                 <h2>Technical Skills</h2>
                 <p>
-                    Technologies I use professionally and in personal projects. 
-                    Check out my Experience and Projects sections to see them in action.
+                    Technologies I use professionally and in personal projects.
                 </p>
             </div>
             
@@ -71,7 +70,7 @@ function Skills () {
             </div>
 
             <div className='skills-footer'>
-                <p>Always learning and exploring new technologies to stay current in the ever-evolving web development landscape.</p>
+                <p>Always open to learn and explore new technologies.</p>
             </div>
         </section>
     );

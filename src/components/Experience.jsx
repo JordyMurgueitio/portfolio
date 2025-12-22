@@ -7,7 +7,7 @@ function Experience() {
             company: "Current Position",
             period: "Present",
             description: "Building internal tools and applications using Vue.js and Express.js. Responsible for database querying to resolve customer issues, debugging existing code, and maintaining system reliability. Collaborate with cross-functional teams to deliver solutions that improve operational efficiency.",
-            technologies: ["Vue.js", "Express.js", "SQL", "JavaScript", "Debugging", "Database Management"]
+            technologies: ["Vue.js", "Express.js", "SQL", "JavaScript", "Debugging", "AWS"]
         },
         {
             title: "HTML Developer",
@@ -22,7 +22,6 @@ function Experience() {
         <section id="experience-section">
             <div className="experience-header">
                 <h2>Professional Experience</h2>
-                <p>Building real-world applications and solving complex problems in professional environments.</p>
             </div>
             <div className="experience-container">
                 {experiences.map((exp, index) => (
