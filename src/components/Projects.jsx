@@ -84,8 +84,7 @@ function Projects() {
     return (
         <section id='projects-section'>
             <div className="projects-header">
-                <h2>Featured Projects</h2>
-                <p>Professional work that makes an impact</p>
+                <h2>Projects</h2>
             </div>
             <div className="projects-accordion">
                 {projects.map((project, index) => {

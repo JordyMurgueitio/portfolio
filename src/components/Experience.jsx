@@ -6,7 +6,7 @@ function Experience() {
             title: "Support Developer",
             company: "Current Position",
             period: "Present",
-            description: "Building internal tools and applications using Vue.js and Express.js. Responsible for database querying to resolve customer issues, debugging existing code, and maintaining system reliability. Collaborate with cross-functional teams to deliver solutions that improve operational efficiency.",
+            description: "Building internal tools and applications using Vue.js and Express.js. Responsible for database querying to resolve customer issues, debugging existing code, and maintaining system reliability. Collaborate with cross-functional teams to identify root causes and validate fixes.",
             technologies: ["Vue.js", "Express.js", "SQL", "JavaScript", "Debugging", "AWS"]
         },
         {

@@ -33,8 +33,7 @@ function Skills () {
                 { name: "Jira", icon: "fa-solid fa-tasks" },
                 { name: "Figma", icon: "fa-brands fa-figma" },
                 { name: "Intercom", icon: "fa-solid fa-comments" },
-                { name: "Braze", icon: "fa-solid fa-envelope" },
-                { name: "Kibana", icon: "fa-solid fa-chart-bar" }
+                { name: "Braze", icon: "fa-solid fa-envelope" }
             ]
         }
     ];
