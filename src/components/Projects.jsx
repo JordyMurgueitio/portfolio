@@ -1,21 +1,31 @@
 import { useState } from 'react';
 import weather from '../assets/weather-app.png'
+import demoSpecie from '../assets/demo-specie.mp4'
+import demoSoReplica from '../assets/demo-so-replica.mp4'
 import './Projects.css';
-// Add your internal tool screenshots/videos here:
-// import supportDashboard from '../assets/support-dashboard.png' (or .gif or .mp4)
-// import crmTool from '../assets/crm-tool.png'
-// import dataAnalytics from '../assets/data-analytics.png'
 
 function Projects() {
     const [expandedProject, setExpandedProject] = useState(0); // First project expanded by default
+    const [playingVideos, setPlayingVideos] = useState({}); // Track which videos are playing
+    
+    const handleVideoClick = (e, projectIndex) => {
+        if (e.target.paused) {
+            e.target.play();
+            setPlayingVideos(prev => ({ ...prev, [projectIndex]: true }));
+        } else {
+            e.target.pause();
+            setPlayingVideos(prev => ({ ...prev, [projectIndex]: false }));
+        }
+    };
+
     const projects = [
         // PROFESSIONAL / INTERNAL TOOLS
         {
-            title: "Internal Support Dashboard",
+            title: "Internal Creation Support Tool",
             description: "Production-level Vue.js and Express.js application designed for support teams to manage and resolve customer issues efficiently. Features real-time ticket tracking, advanced SQL query builder for customer data retrieval, custom filtering and search functionality, and interactive data visualizations. Successfully reduced average ticket resolution time by 30% and is actively used by 15+ team members daily. Implements RESTful API architecture with secure authentication and role-based access control.",
             techStack: ["Vue.js", "Express.js", "SQL", "Node.js", "REST API", "Authentication"],
-            image: null, // ADD YOUR SCREENSHOT/GIF HERE: supportDashboard
-            video: null, // OPTIONAL: Add video demo path
+            image: null,
+            video: demoSpecie,
             liveUrl: null, // Can't share - internal tool
             githubUrl: null, // Can't share - proprietary code
             status: "production",
@@ -24,11 +34,11 @@ function Projects() {
             impact: ["30% faster resolution time", "15+ daily active users", "Real-time updates"]
         },
         {
-            title: "CRM Email Campaign System",
+            title: "Order Replication Internal Feature",
             description: "Comprehensive email template builder and automation system for marketing campaigns. Built 25+ responsive HTML email templates using Liquid templating language, ensuring cross-client compatibility across Gmail, Outlook, Apple Mail, and mobile platforms. Integrated with Braze platform for automated campaign deployment. Features include dynamic content personalization, A/B testing support, and analytics tracking. Improved campaign deployment speed by 40% and maintained 98%+ rendering consistency.",
             techStack: ["HTML", "CSS", "Liquid", "Braze", "JavaScript", "Responsive Design"],
-            image: null, // ADD YOUR SCREENSHOT HERE: crmTool
-            video: null,
+            image: null,
+            video: demoSoReplica,
             liveUrl: null,
             githubUrl: null,
             status: "production",
@@ -127,10 +137,56 @@ function Projects() {
                                 <div className="accordion-content-inner">
                                     {/* Media Section */}
                                     {project.video ? (
-                                        <div className="project-media">
-                                            <video className="project-video" autoPlay loop muted playsInline>
+                                        <div className="project-media" style={{ position: 'relative' }}>
+                                            <video 
+                                                className="project-video" 
+                                                loop 
+                                                muted 
+                                                playsInline
+                                                onClick={(e) => handleVideoClick(e, index)}
+                                                style={{ cursor: 'pointer' }}
+                                            >
                                                 <source src={project.video} type="video/mp4" />
                                             </video>
+                                            {!playingVideos[index] && (
+                                                <div 
+                                                    className="video-play-overlay"
+                                                    onClick={(e) => {
+                                                        const video = e.currentTarget.previousElementSibling;
+                                                        handleVideoClick({ target: video }, index);
+                                                    }}
+                                                    style={{
+                                                        position: 'absolute',
+                                                        top: '50%',
+                                                        left: '50%',
+                                                        transform: 'translate(-50%, -50%)',
+                                                        width: '80px',
+                                                        height: '80px',
+                                                        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                                                        borderRadius: '50%',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center',
+                                                        cursor: 'pointer',
+                                                        transition: 'all 0.3s ease',
+                                                        pointerEvents: 'all'
+                                                    }}
+                                                    onMouseEnter={(e) => {
+                                                        e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+                                                        e.currentTarget.style.transform = 'translate(-50%, -50%) scale(1.1)';
+                                                    }}
+                                                    onMouseLeave={(e) => {
+                                                        e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+                                                        e.currentTarget.style.transform = 'translate(-50%, -50%) scale(1)';
+                                                    }}
+                                                >
+                                                    <i className="fa fa-play" style={{ 
+                                                        fontSize: '32px', 
+                                                        color: 'white',
+                                                        marginLeft: '6px' // Optical alignment for play icon
+                                                    }}></i>
+                                                </div>
+                                            )}
                                         </div>
                                     ) : project.image ? (
                                         <div className="project-media">
