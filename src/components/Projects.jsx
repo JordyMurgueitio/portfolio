@@ -6,56 +6,42 @@ import './Projects.css';
 
 function Projects() {
     const [expandedProject, setExpandedProject] = useState(0); // First project expanded by default
-    const [playingVideos, setPlayingVideos] = useState({}); // Track which videos are playing
-    
-    const handleVideoClick = (e, projectIndex) => {
-        if (e.target.paused) {
-            e.target.play();
-            setPlayingVideos(prev => ({ ...prev, [projectIndex]: true }));
-        } else {
-            e.target.pause();
-            setPlayingVideos(prev => ({ ...prev, [projectIndex]: false }));
-        }
-    };
 
     const projects = [
         // PROFESSIONAL / INTERNAL TOOLS
         {
             title: "Internal Creation Support Tool",
-            description: "Production-level Vue.js and Express.js application designed for support teams to manage and resolve customer issues efficiently. Features real-time ticket tracking, advanced SQL query builder for customer data retrieval, custom filtering and search functionality, and interactive data visualizations. Successfully reduced average ticket resolution time by 30% and is actively used by 15+ team members daily. Implements RESTful API architecture with secure authentication and role-based access control.",
-            techStack: ["Vue.js", "Express.js", "SQL", "Node.js", "REST API", "Authentication"],
+            description: "Developed an internal feature that allows support agents to create and manage farm-related data (species, colors, warehouses, airlines) directly in the system without needing engineering escalation. Built with Vue.js on the frontend and Express.js on the backend the tool queries multiple database tables, includes validation to prevent duplicate records, and ensures data integrity.",
+            techStack: ["Vue.js", "Express.js", "SQL"],
             image: null,
             video: demoSpecie,
             liveUrl: null, // Can't share - internal tool
             githubUrl: null, // Can't share - proprietary code
             status: "production",
-            year: "2024-Present",
             isInternal: true,
-            impact: ["30% faster resolution time", "15+ daily active users", "Real-time updates"]
+            impact: ["Faster resolution time", "Less escalations to the tech team", "Real-time updates"]
         },
         {
             title: "Order Replication Internal Feature",
-            description: "Comprehensive email template builder and automation system for marketing campaigns. Built 25+ responsive HTML email templates using Liquid templating language, ensuring cross-client compatibility across Gmail, Outlook, Apple Mail, and mobile platforms. Integrated with Braze platform for automated campaign deployment. Features include dynamic content personalization, A/B testing support, and analytics tracking. Improved campaign deployment speed by 40% and maintained 98%+ rendering consistency.",
-            techStack: ["HTML", "CSS", "Liquid", "Braze", "JavaScript", "Responsive Design"],
+            description: "Developed an internal tool that allows users to replicate orders for a specific farm and a restricted date range. Built with Vue.js and Express.js, the tool enforces multiple safety and validation rules to protect data integrity. Users are limited to a maximum date range of 7 days, and security filters prevent the same replication link from being executed more than once. Each replication action is logged and displayed, allowing the team to track executions and ensure accountability",
+            techStack: ["Vue.js", "Express.js"],
             image: null,
             video: demoSoReplica,
             liveUrl: null,
             githubUrl: null,
             status: "production",
-            year: "2023-2024",
             isInternal: true,
-            impact: ["25+ templates created", "98% compatibility rate", "40% faster deployment"]
+            impact: ["Less escalations to the tech team", "No human error (link was manually created before)", "No order duplications"]
         },
         {
-            title: "Data Analytics Dashboard",
-            description: "Internal data visualization and reporting tool built with Vue.js for monitoring key business metrics and customer insights. Features include real-time data updates via WebSocket connections, customizable dashboard widgets, SQL query interface for ad-hoc analysis, and automated report generation. Integrates with Kibana for log analysis and provides actionable insights for cross-functional teams. Reduced manual reporting time by 50% and enabled data-driven decision making across departments.",
-            techStack: ["Vue.js", "Express.js", "Kibana", "SQL", "WebSocket", "Data Visualization"],
-            image: null, // ADD YOUR SCREENSHOT HERE: dataAnalytics
+            title: "Code Snippet Manager",
+            description: "Internal tool for managing and organizing code snippets across projects. Built with Vue.js and Express.js, it allows users to create, edit, and delete snippets, as well as categorize them for easy retrieval. Features include a search function, user authentication, and integration with existing project repositories.",
+            techStack: ["Vue.js", "Express.js", "MongoDB", "Node.js"],
+            image: null,
             video: null,
             liveUrl: null,
             githubUrl: null,
             status: "production",
-            year: "2024",
             isInternal: true,
             impact: ["50% less manual reporting", "Real-time metrics", "Cross-team visibility"]
         },
@@ -70,7 +56,6 @@ function Projects() {
             liveUrl: "https://jordymurgueitio.github.io/weather-app/",
             githubUrl: "https://github.com/JordyMurgueitio/weather-app",
             status: "live",
-            year: "2024",
             isInternal: false
         },
         {
@@ -82,7 +67,6 @@ function Projects() {
             liveUrl: "#",
             githubUrl: "#",
             status: "development",
-            year: "2024",
             isInternal: false
         }
     ];
@@ -127,7 +111,6 @@ function Projects() {
                                     </div>
                                 </div>
                                 <div className="accordion-header-right">
-                                    <span className="accordion-year">{project.year}</span>
                                     <i className={`fa fa-chevron-${isExpanded ? 'up' : 'down'} accordion-icon`}></i>
                                 </div>
                             </div>
@@ -137,56 +120,16 @@ function Projects() {
                                 <div className="accordion-content-inner">
                                     {/* Media Section */}
                                     {project.video ? (
-                                        <div className="project-media" style={{ position: 'relative' }}>
+                                        <div className="project-media">
                                             <video 
                                                 className="project-video" 
+                                                autoPlay 
                                                 loop 
                                                 muted 
                                                 playsInline
-                                                onClick={(e) => handleVideoClick(e, index)}
-                                                style={{ cursor: 'pointer' }}
                                             >
                                                 <source src={project.video} type="video/mp4" />
                                             </video>
-                                            {!playingVideos[index] && (
-                                                <div 
-                                                    className="video-play-overlay"
-                                                    onClick={(e) => {
-                                                        const video = e.currentTarget.previousElementSibling;
-                                                        handleVideoClick({ target: video }, index);
-                                                    }}
-                                                    style={{
-                                                        position: 'absolute',
-                                                        top: '50%',
-                                                        left: '50%',
-                                                        transform: 'translate(-50%, -50%)',
-                                                        width: '80px',
-                                                        height: '80px',
-                                                        backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                                                        borderRadius: '50%',
-                                                        display: 'flex',
-                                                        alignItems: 'center',
-                                                        justifyContent: 'center',
-                                                        cursor: 'pointer',
-                                                        transition: 'all 0.3s ease',
-                                                        pointerEvents: 'all'
-                                                    }}
-                                                    onMouseEnter={(e) => {
-                                                        e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
-                                                        e.currentTarget.style.transform = 'translate(-50%, -50%) scale(1.1)';
-                                                    }}
-                                                    onMouseLeave={(e) => {
-                                                        e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-                                                        e.currentTarget.style.transform = 'translate(-50%, -50%) scale(1)';
-                                                    }}
-                                                >
-                                                    <i className="fa fa-play" style={{ 
-                                                        fontSize: '32px', 
-                                                        color: 'white',
-                                                        marginLeft: '6px' // Optical alignment for play icon
-                                                    }}></i>
-                                                </div>
-                                            )}
                                         </div>
                                     ) : project.image ? (
                                         <div className="project-media">
@@ -208,7 +151,7 @@ function Projects() {
                                         {/* Impact Metrics */}
                                         {project.impact && (
                                             <div className="project-impact">
-                                                <h6>💪 Key Impact:</h6>
+                                                <h6>Key Impact:</h6>
                                                 <ul>
                                                     {project.impact.map((item, impactIndex) => (
                                                         <li key={impactIndex}>
@@ -221,7 +164,7 @@ function Projects() {
                                         
                                         {/* Tech Stack */}
                                         <div className="project-tech">
-                                            <h6>🛠️ Tech Stack:</h6>
+                                            <h6>Tech Stack:</h6>
                                             <div className="tech-stack">
                                                 {project.techStack.map((tech, techIndex) => (
                                                     <span key={techIndex} className="tech-tag">{tech}</span>
