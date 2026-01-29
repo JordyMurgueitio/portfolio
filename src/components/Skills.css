@@ -57,6 +57,21 @@
 .skills-category {
   animation: fadeInUp 0.8s ease-out;
   animation-fill-mode: backwards;
+  border-left: 4px solid rgba(255, 255, 255, 0.2);
+  padding-left: 20px;
+  transition: border-color 0.3s ease;
+}
+
+.skills-category:nth-child(1) {
+  border-left-color: #00d4ff;
+}
+
+.skills-category:nth-child(2) {
+  border-left-color: #4ade80;
+}
+
+.skills-category:nth-child(3) {
+  border-left-color: #fbbf24;
 }
 
 .category-header {
@@ -94,10 +109,10 @@
 }
 
 .skill-card {
-  background: rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 20px;
+  padding: 25px 20px;
   border-radius: 16px;
   display: flex;
   flex-direction: column;
@@ -107,6 +122,7 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
+  min-height: 140px;
 }
 
 .skill-card::before {
@@ -124,13 +140,18 @@
 @media (hover: hover) and (pointer: fine) {
   .skill-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    background: rgba(255, 255, 255, 0.25);
-    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 212, 255, 0.15);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%);
+    border-color: rgba(0, 212, 255, 0.4);
   }
 
   .skill-card:hover::before {
     transform: translateX(100%);
+  }
+  
+  .skill-card:hover .skill-icon {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
   }
 }
 
@@ -140,10 +161,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
   border-radius: 12px;
   transition: all 0.3s ease;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .skill-icon i {
