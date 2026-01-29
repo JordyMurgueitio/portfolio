@@ -33,8 +33,6 @@ function Projects() {
             isInternal: true,
             impact: ["Less escalations to the tech team", "No human error (link was manually created before)", "No order duplications"]
         },
-        
-        // PERSONAL PROJECTS
         {
             title: "Code Snippet Manager",
             description: "Personal code snippet library built with React and Vite. Used for personal documentation. Supports multi-code-block snippets, real-time search/filter, category grouping, and list/grid view modes. Includes local storage persistence and JSON export/import functionality. Features a clean, minimal UI with dark-themed code blocks and responsive design.",
@@ -46,6 +44,16 @@ function Projects() {
             isInternal: false
         },
         {
+            title: "HTML Email Template",
+            description: "Responsive HTML email template designed for Preply. Built with table-based layout for maximum email client compatibility. Features optimized inline CSS, fallback fonts, and tested across major email clients (Gmail, Outlook, Apple Mail). Includes mobile-responsive design with conditional comments for Outlook-specific rendering.",
+            techStack: ["HTML", "CSS", "Email Design", "Responsive Design"],
+            video: demoPreplyEmail,
+            liveUrl: null,
+            githubUrl: null,
+            status: "production",
+            isInternal: true
+        },
+        {
             title: "Weather App",
             description: "Weather app built with vanilla JavaScript that fetches real-time data from OpenWeatherMap API. Search any city or use geolocation to get current conditions, 5-day forecast, and detailed metrics like humidity, wind speed, sunrise/sunset times. Features include Celsius/Fahrenheit toggle, recent search history stored locally, smart caching to reduce API calls, and dynamic backgrounds that change based on weather conditions.",
             techStack: ["HTML", "CSS", "JavaScript", "Weather API"],
@@ -54,16 +62,6 @@ function Projects() {
             githubUrl: "https://github.com/JordyMurgueitio/weather-app",
             status: "live",
             isInternal: false
-        },
-        {
-            title: "HTML Email Template",
-            description: "Responsive HTML email template designed for Preply. Built with table-based layout for maximum email client compatibility. Features optimized inline CSS, fallback fonts, and tested across major email clients (Gmail, Outlook, Apple Mail). Includes mobile-responsive design with conditional comments for Outlook-specific rendering.",
-            techStack: ["HTML", "CSS", "Email Design", "Responsive Design"],
-            video: demoPreplyEmail,
-            liveUrl: "https://jordymurgueitio.github.io/preply-email-template/",
-            githubUrl: "https://github.com/JordyMurgueitio/preply-email-template",
-            status: "production",
-            isInternal: true
         }
     ];
 
