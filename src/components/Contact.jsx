@@ -88,7 +88,7 @@ EDUCATION & CERTIFICATIONS
             <div className="contact-content">
                 <div className="contact-header">
                     <h2>Let's Work Together</h2>
-                    <p>Ready to bring your next project to life? I'm always interested in discussing new opportunities and exciting challenges.</p>
+                    <p>I'm always interested in discussing new opportunities and exciting challenges.</p>
                 </div>
                 
                 <div className="contact-grid">

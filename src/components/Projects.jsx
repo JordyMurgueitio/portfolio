@@ -8,6 +8,7 @@ import './Projects.css';
 
 function Projects() {
     const [expandedProject, setExpandedProject] = useState(0); // First project expanded by default
+    const [filter, setFilter] = useState('all'); // 'all', 'professional', 'personal'
 
     const projects = [
         // PROFESSIONAL / INTERNAL TOOLS
@@ -65,6 +66,13 @@ function Projects() {
         }
     ];
 
+    const filteredProjects = projects.filter(project => {
+        if (filter === 'all') return true;
+        if (filter === 'professional') return project.isInternal;
+        if (filter === 'personal') return !project.isInternal;
+        return true;
+    });
+
     const toggleProject = (index) => {
         setExpandedProject(expandedProject === index ? null : index);
     };
@@ -73,9 +81,31 @@ function Projects() {
         <section id='projects-section'>
             <div className="projects-header">
                 <h2>Projects</h2>
+                
+                {/* Filter Tabs */}
+                <div className="project-filters">
+                    <button 
+                        className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
+                        onClick={() => setFilter('all')}
+                    >
+                        All ({projects.length})
+                    </button>
+                    <button 
+                        className={`filter-btn ${filter === 'professional' ? 'active' : ''}`}
+                        onClick={() => setFilter('professional')}
+                    >
+                        <i className="fa fa-briefcase"></i> Professional ({projects.filter(p => p.isInternal).length})
+                    </button>
+                    <button 
+                        className={`filter-btn ${filter === 'personal' ? 'active' : ''}`}
+                        onClick={() => setFilter('personal')}
+                    >
+                        <i className="fa fa-code"></i> Personal ({projects.filter(p => !p.isInternal).length})
+                    </button>
+                </div>
             </div>
             <div className="projects-accordion">
-                {projects.map((project, index) => {
+                {filteredProjects.map((project, index) => {
                     const isExpanded = expandedProject === index;
                     
                     return (
