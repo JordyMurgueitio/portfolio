@@ -83,7 +83,239 @@
   font-size: 0.9em;
 }
 
-/* ACCORDION CONTAINER */
+/* PROJECT GRID */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+  width: 95%;
+  max-width: 1200px;
+  margin: 40px auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* PROJECT CARD */
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.internal-card {
+  border-left: 3px solid #00d4ff;
+}
+
+.personal-card {
+  border-left: 3px solid #4ade80;
+}
+
+/* CARD VIDEO */
+.card-video {
+  width: 100%;
+  height: 250px;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-video.placeholder {
+  flex-direction: column;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.card-video.placeholder i {
+  font-size: 2em;
+}
+
+.card-video.placeholder p {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+/* CARD CONTENT */
+.card-content {
+  padding: 20px;
+  color: #fff;
+}
+
+.card-header {
+  margin-bottom: 15px;
+}
+
+.card-header h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.4em;
+  color: #fff;
+}
+
+.card-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+.status-badge.production {
+  background: rgba(0, 212, 255, 0.15);
+  color: #00d4ff;
+}
+
+.status-badge.live {
+  background: rgba(74, 222, 128, 0.15);
+  color: #4ade80;
+}
+
+.type-badge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8em;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.card-description {
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  margin: 15px 0;
+  font-size: 0.95em;
+}
+
+/* CARD IMPACT */
+.card-impact {
+  margin: 15px 0;
+  padding: 12px;
+  background: rgba(0, 212, 255, 0.08);
+  border-radius: 8px;
+  border-left: 3px solid #00d4ff;
+}
+
+.card-impact strong {
+  color: #00d4ff;
+  font-size: 0.9em;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.card-impact ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card-impact li {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.85em;
+  margin: 5px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.card-impact li i {
+  color: #00d4ff;
+  font-size: 0.9em;
+  margin-top: 2px;
+}
+
+/* CARD TECH STACK */
+.card-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+.tech-tag {
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  font-size: 0.85em;
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* CARD LINKS */
+.card-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.card-links a {
+  flex: 1;
+  padding: 10px 15px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.9em;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card-links a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.card-nda {
+  margin-top: 20px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85em;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    width: 90%;
+  }
+
+  .card-video {
+    height: 200px;
+  }
+}
+
+/* ACCORDION CONTAINER - REMOVED */
 .projects-accordion {
   width: 95%;
   max-width: 900px;

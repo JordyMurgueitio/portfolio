@@ -7,7 +7,6 @@ import demoPreplyEmail from '../assets/demo-preply-email.mp4'
 import './Projects.css';
 
 function Projects() {
-    const [expandedProject, setExpandedProject] = useState(0); // First project expanded by default
     const [filter, setFilter] = useState('all'); // 'all', 'professional', 'personal'
 
     const projects = [
@@ -73,10 +72,6 @@ function Projects() {
         return true;
     });
 
-    const toggleProject = (index) => {
-        setExpandedProject(expandedProject === index ? null : index);
-    };
-
     return (
         <section id='projects-section'>
             <div className="projects-header">
@@ -104,118 +99,89 @@ function Projects() {
                     </button>
                 </div>
             </div>
-            <div className="projects-accordion">
-                {filteredProjects.map((project, index) => {
-                    const isExpanded = expandedProject === index;
-                    
-                    return (
-                        <div 
-                            key={index} 
-                            className={`accordion-project ${isExpanded ? 'expanded' : 'collapsed'} ${project.isInternal ? 'internal-project' : ''}`}
-                        >
-                            {/* Clickable Header - Always Visible */}
-                            <div 
-                                className="accordion-header" 
-                                onClick={() => toggleProject(index)}
-                            >
-                                <div className="accordion-header-left">
-                                    <div className="accordion-number">0{index + 1}</div>
-                                    <div className="accordion-title-group">
-                                        <h3 className="accordion-title">{project.title}</h3>
-                                        <div className="accordion-badges">
-                                            <span className={`accordion-status status-${project.status}`}>
-                                                {project.status === 'production' ? '● Production' : project.status === 'live' ? '● Live' : '● In Progress'}
-                                            </span>
-                                            {project.isInternal && (
-                                                <span className="accordion-internal-badge">
-                                                    <i className="fa fa-briefcase"></i> Professional
-                                                </span>
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="accordion-header-right">
-                                    <i className={`fa fa-chevron-${isExpanded ? 'up' : 'down'} accordion-icon`}></i>
-                                </div>
-                            </div>
 
-                            {/* Expandable Content */}
-                            <div className="accordion-content">
-                                <div className="accordion-content-inner">
-                                    {/* Media Section */}
-                                    {project.video ? (
-                                        <div className="project-media">
-                                            <video 
-                                                className="project-video" 
-                                                autoPlay 
-                                                loop 
-                                                muted 
-                                                playsInline
-                                            >
-                                                <source src={project.video} type="video/mp4" />
-                                            </video>
-                                        </div>
-                                    ) : (
-                                        <div className="project-media placeholder">
-                                            <div className="placeholder-icon">
-                                                <i className={project.isInternal ? "fa fa-briefcase" : "fa fa-code"}></i>
-                                                <p>{project.isInternal ? "NDA Protected" : "Coming Soon"}</p>
-                                            </div>
-                                        </div>
+            <div className="projects-grid">
+                {filteredProjects.map((project, index) => (
+                    <div 
+                        key={index} 
+                        className={`project-card ${project.isInternal ? 'internal-card' : 'personal-card'}`}
+                    >
+                        {/* Video Section */}
+                        {project.video ? (
+                            <div className="card-video">
+                                <video 
+                                    autoPlay 
+                                    loop 
+                                    muted 
+                                    playsInline
+                                >
+                                    <source src={project.video} type="video/mp4" />
+                                </video>
+                            </div>
+                        ) : (
+                            <div className="card-video placeholder">
+                                <i className="fa fa-lock"></i>
+                                <p>NDA Protected</p>
+                            </div>
+                        )}
+
+                        {/* Content Section */}
+                        <div className="card-content">
+                            <div className="card-header">
+                                <h3>{project.title}</h3>
+                                <div className="card-badges">
+                                    <span className={`status-badge ${project.status}`}>
+                                        {project.status === 'production' ? '● Production' : '● Live'}
+                                    </span>
+                                    {project.isInternal && (
+                                        <span className="type-badge">
+                                            <i className="fa fa-briefcase"></i> Professional
+                                        </span>
                                     )}
-
-                                    {/* Details Section */}
-                                    <div className="project-details">
-                                        <p className="project-description">{project.description}</p>
-                                        
-                                        {/* Impact Metrics */}
-                                        {project.impact && (
-                                            <div className="project-impact">
-                                                <h6>Key Impact:</h6>
-                                                <ul>
-                                                    {project.impact.map((item, impactIndex) => (
-                                                        <li key={impactIndex}>
-                                                            <i className="fa fa-check-circle"></i> {item}
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        )}
-                                        
-                                        {/* Tech Stack */}
-                                        <div className="project-tech">
-                                            <h6>Tech Stack:</h6>
-                                            <div className="tech-stack">
-                                                {project.techStack.map((tech, techIndex) => (
-                                                    <span key={techIndex} className="tech-tag">{tech}</span>
-                                                ))}
-                                            </div>
-                                        </div>
-                                        
-                                        {/* Actions */}
-                                        {project.isInternal ? (
-                                            <div className="internal-note">
-                                                <i className="fa fa-lock"></i>
-                                                <span>Internal company tool - code unavailable per NDA</span>
-                                            </div>
-                                        ) : (
-                                            <div className="project-links">
-                                                <a className="project-link" href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                                                    <i className="fa fa-external-link"></i> 
-                                                    <span>Live Demo</span>
-                                                </a>
-                                                <a className="project-link github-link" href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                                                    <i className="fa fa-github"></i> 
-                                                    <span>View Code</span>
-                                                </a>
-                                            </div>
-                                        )}
-                                    </div>
                                 </div>
                             </div>
+
+                            <p className="card-description">{project.description}</p>
+
+                            {/* Impact Section */}
+                            {project.impact && (
+                                <div className="card-impact">
+                                    <strong>Key Impact:</strong>
+                                    <ul>
+                                        {project.impact.map((item, idx) => (
+                                            <li key={idx}>
+                                                <i className="fa fa-check-circle"></i> {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+
+                            {/* Tech Stack */}
+                            <div className="card-tech">
+                                {project.techStack.map((tech, idx) => (
+                                    <span key={idx} className="tech-tag">{tech}</span>
+                                ))}
+                            </div>
+
+                            {/* Links */}
+                            {project.isInternal ? (
+                                <div className="card-nda">
+                                    <i className="fa fa-lock"></i> Code unavailable per NDA
+                                </div>
+                            ) : (
+                                <div className="card-links">
+                                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                                        <i className="fa fa-external-link"></i> Live Demo
+                                    </a>
+                                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                                        <i className="fa fa-github"></i> View Code
+                                    </a>
+                                </div>
+                            )}
                         </div>
-                    );
-                })}
+                    </div>
+                ))}
             </div>
             
             <div className="projects-cta">
