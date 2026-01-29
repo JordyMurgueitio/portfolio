@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import weather from '../assets/weather-app.png'
 import demoSpecie from '../assets/demo-specie.mp4'
 import demoSoReplica from '../assets/demo-so-replica.mp4'
 import demoCodeSnippet from '../assets/demo-code-snippet.mp4'
+import demoWeatherApp from '../assets/demo-weather-app.mp4'
 import './Projects.css';
 
 function Projects() {
@@ -14,7 +14,6 @@ function Projects() {
             title: "Internal Creation Support Tool",
             description: "Developed an internal feature that allows support agents to create and manage farm-related data (species, colors, warehouses, airlines) directly in the system without needing engineering escalation. Built with Vue.js on the frontend and Express.js on the backend the tool queries multiple database tables, includes validation to prevent duplicate records, and ensures data integrity.",
             techStack: ["Vue.js", "Express.js", "SQL"],
-            image: null,
             video: demoSpecie,
             liveUrl: null, // Can't share - internal tool
             githubUrl: null, // Can't share - proprietary code
@@ -26,7 +25,6 @@ function Projects() {
             title: "Order Replication Internal Feature",
             description: "Developed an internal tool that allows users to replicate orders for a specific farm and a restricted date range. Built with Vue.js and Express.js, the tool enforces multiple safety and validation rules to protect data integrity. Users are limited to a maximum date range of 7 days, and security filters prevent the same replication link from being executed more than once. Each replication action is logged and displayed, allowing the team to track executions and ensure accountability",
             techStack: ["Vue.js", "Express.js"],
-            image: null,
             video: demoSoReplica,
             liveUrl: null,
             githubUrl: null,
@@ -40,7 +38,6 @@ function Projects() {
             title: "Code Snippet Manager",
             description: "Personal code snippet library built with React and Vite. Used for personal documentation. Supports multi-code-block snippets, real-time search/filter, category grouping, and list/grid view modes. Includes local storage persistence and JSON export/import functionality. Features a clean, minimal UI with dark-themed code blocks and responsive design.",
             techStack: ["HTML", "CSS", "JavaScript", "React"],
-            image: null,
             video: demoCodeSnippet,
             liveUrl: 'https://jordymurgueitio.github.io/code-snippet-app/',
             githubUrl: 'https://github.com/JordyMurgueitio/code-snippet-app',
@@ -49,10 +46,9 @@ function Projects() {
         },
         {
             title: "Weather App",
-            description: "Real-time weather application with location-based forecasts. Clean UI with dynamic weather data and responsive design.",
+            description: "Weather app built with vanilla JavaScript that fetches real-time data from OpenWeatherMap API. Search any city or use geolocation to get current conditions, 5-day forecast, and detailed metrics like humidity, wind speed, sunrise/sunset times. Features include Celsius/Fahrenheit toggle, recent search history stored locally, smart caching to reduce API calls, and dynamic backgrounds that change based on weather conditions.",
             techStack: ["HTML", "CSS", "JavaScript", "Weather API"],
-            image: weather,
-            video: null,
+            video: demoWeatherApp,
             liveUrl: "https://jordymurgueitio.github.io/weather-app/",
             githubUrl: "https://github.com/JordyMurgueitio/weather-app",
             status: "live",
@@ -62,7 +58,6 @@ function Projects() {
             title: "Todo App",
             description: "Task management application built with React. Features add, edit, delete functionality with local storage persistence.",
             techStack: ["React", "JavaScript", "CSS", "Local Storage"],
-            image: null,
             video: null,
             liveUrl: "#",
             githubUrl: "#",
@@ -130,10 +125,6 @@ function Projects() {
                                             >
                                                 <source src={project.video} type="video/mp4" />
                                             </video>
-                                        </div>
-                                    ) : project.image ? (
-                                        <div className="project-media">
-                                            <img className="project-image" src={project.image} alt={project.title} />
                                         </div>
                                     ) : (
                                         <div className="project-media placeholder">
