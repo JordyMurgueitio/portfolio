@@ -5,20 +5,17 @@ function Contact () {
         {
             name: "GitHub",
             icon: "fa fa-github",
-            url: "https://github.com/JordyMurgueitio",
-            description: "View my code"
+            url: "https://github.com/JordyMurgueitio"
         },
         {
             name: "LinkedIn", 
             icon: "fa fa-linkedin",
-            url: "https://www.linkedin.com/in/jordy-murgueitio/",
-            description: "Let's connect"
+            url: "https://www.linkedin.com/in/jordy-murgueitio/"
         },
         {
             name: "Email",
             icon: "fa fa-envelope", 
-            url: "mailto:jordinho.15@gmail.com",
-            description: "Send a message"
+            url: "mailto:jordinho.15@gmail.com"
         }
     ];
 
