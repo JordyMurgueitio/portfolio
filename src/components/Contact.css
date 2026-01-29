@@ -46,37 +46,41 @@
   margin: 0 auto;
 }
 
-.contact-grid {
+.availability-status {
   display: flex;
-  flex-direction: column;
-  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 50px 0 40px 0;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.1em;
   animation: fadeInUp 0.8s ease-out;
   animation-delay: 0.2s;
   animation-fill-mode: backwards;
-}
-
-.contact-info h3 {
-  color: #fff;
-  font-size: 1.6em;
-  margin: 0 0 25px 0;
-  font-weight: 600;
-  text-align: center;
 }
 
 .contact-methods {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  max-width: 800px;
+  margin: 0 auto 50px auto;
+  animation: fadeInUp 0.8s ease-out;
+  animation-delay: 0.3s;
+  animation-fill-mode: backwards;
 }
 
 .contact-method {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.15);
+  justify-content: center;
+  padding: 30px 20px;
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
   text-decoration: none;
   color: #fff;
   transition: all 0.3s ease;
@@ -84,63 +88,39 @@
 }
 
 .contact-method:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.4);
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
 .contact-icon {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 15px;
+  margin-bottom: 15px;
   flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.contact-method:hover .contact-icon {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
 }
 
 .contact-icon i {
-  font-size: 1.4em;
+  font-size: 1.8em;
   color: #fff;
-}
-
-.contact-details {
-  display: flex;
-  flex-direction: column;
 }
 
 .contact-name {
   font-weight: 600;
-  font-size: 1.1em;
-  margin-bottom: 5px;
-}
-
-.contact-description {
-  font-size: 0.9em;
-  opacity: 0.8;
-}
-
-.contact-cta {
+  font-size: 1.2em;
   text-align: center;
-  padding: 30px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.availability-status {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 30px;
-  color: #fff;
-  font-weight: 500;
 }
 
 .status-indicator {
@@ -177,23 +157,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   width: 100%;
-  max-width: 280px;
+  max-width: 320px;
   margin: 0 auto;
   color: #ffffff;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
   backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 255, 255, 0.3);
-  padding: 16px 32px;
-  font-size: 1.1em;
-  border-radius: 12px;
+  padding: 20px 40px;
+  font-size: 1.15em;
+  border-radius: 16px;
   transition: all 0.3s ease;
   cursor: pointer;
   font-weight: 600;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   position: relative;
   overflow: hidden;
+  animation: fadeInUp 0.8s ease-out;
+  animation-delay: 0.4s;
+  animation-fill-mode: backwards;
 }
 
 .download-cv-button::before {
@@ -234,58 +217,40 @@
     font-size: 1.3em;
   }
   
-  .contact-grid {
+  .availability-status {
+    font-size: 1.2em;
+    margin: 60px 0 50px 0;
+  }
+  
+  .contact-methods {
     flex-direction: row;
-    gap: 60px;
-    align-items: flex-start;
-  }
-  
-  .contact-info {
-    flex: 1;
-  }
-  
-  .contact-info h3 {
-    text-align: left;
-    font-size: 1.8em;
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto 60px auto;
   }
   
   .contact-method {
-    padding: 25px;
+    flex: 1;
+    padding: 40px 20px;
   }
   
   .contact-icon {
-    width: 60px;
-    height: 60px;
-    margin-right: 20px;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
   }
   
   .contact-icon i {
-    font-size: 1.6em;
+    font-size: 2em;
   }
   
   .contact-name {
-    font-size: 1.2em;
-  }
-  
-  .contact-description {
-    font-size: 1em;
-  }
-  
-  .contact-cta {
-    flex: 1;
-    max-width: 400px;
-    padding: 40px;
-  }
-  
-  .contact-message {
-    font-size: 1.05em;
-    padding: 24px;
-    margin: 30px 0 35px 0;
+    font-size: 1.3em;
   }
   
   .download-cv-button {
-    font-size: 1.2em;
-    padding: 18px 36px;
-    max-width: 320px;
+    font-size: 1.25em;
+    padding: 22px 45px;
+    max-width: 360px;
   }
 }

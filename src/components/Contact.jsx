@@ -37,47 +37,32 @@ function Contact () {
                     <p>I'm always interested in discussing new opportunities and exciting challenges.</p>
                 </div>
                 
-                <div className="contact-grid">
-                    <div className="contact-info">
-                        <h3>Get In Touch</h3>
-                        <div className="contact-methods">
-                            {contactMethods.map((method, index) => (
-                                <a 
-                                    key={index}
-                                    href={method.url} 
-                                    target="_blank" 
-                                    rel="noopener noreferrer" 
-                                    className="contact-method"
-                                >
-                                    <div className="contact-icon">
-                                        <i className={method.icon}></i>
-                                    </div>
-                                    <div className="contact-details">
-                                        <span className="contact-name">{method.name}</span>
-                                        <span className="contact-description">{method.description}</span>
-                                    </div>
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-                    
-                    <div className="contact-cta">
-                        <div className="availability-status">
-                            <div className="status-indicator"></div>
-                            <span>Available for new opportunities</span>
-                        </div>
-                        
-                        <p className="contact-message">
-                            I'm currently open to junior to mid-level full-stack or front-end developer positions. 
-                            Feel free to reach out through any of the channels listed.
-                        </p>
-                        
-                        <button className="download-cv-button" onClick={handleDownloadCV}>
-                            <i className="fa fa-download"></i> 
-                            <span>Download Resume</span>
-                        </button>
-                    </div>
+                <div className="availability-status">
+                    <div className="status-indicator"></div>
+                    <span>Available for new opportunities</span>
                 </div>
+                
+                <div className="contact-methods">
+                    {contactMethods.map((method, index) => (
+                        <a 
+                            key={index}
+                            href={method.url} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="contact-method"
+                        >
+                            <div className="contact-icon">
+                                <i className={method.icon}></i>
+                            </div>
+                            <span className="contact-name">{method.name}</span>
+                        </a>
+                    ))}
+                </div>
+                
+                <button className="download-cv-button" onClick={handleDownloadCV}>
+                    <i className="fa fa-download"></i> 
+                    <span>Download Resume</span>
+                </button>
             </div>
         </section>
     );
