@@ -101,9 +101,9 @@ function Projects() {
             </div>
 
             <div className="projects-grid">
-                {filteredProjects.map((project, index) => (
+                {filteredProjects.map((project) => (
                     <div 
-                        key={index} 
+                        key={project.title} 
                         className={`project-card ${project.isInternal ? 'internal-card' : 'personal-card'}`}
                     >
                         {/* Video Section */}
