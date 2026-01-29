@@ -3,6 +3,7 @@ import demoSpecie from '../assets/demo-specie.mp4'
 import demoSoReplica from '../assets/demo-so-replica.mp4'
 import demoCodeSnippet from '../assets/demo-code-snippet.mp4'
 import demoWeatherApp from '../assets/demo-weather-app.mp4'
+import demoPreplyEmail from '../assets/demo-preply-email.mp4'
 import './Projects.css';
 
 function Projects() {
@@ -55,14 +56,14 @@ function Projects() {
             isInternal: false
         },
         {
-            title: "Todo App",
-            description: "Task management application built with React. Features add, edit, delete functionality with local storage persistence.",
-            techStack: ["React", "JavaScript", "CSS", "Local Storage"],
-            video: null,
-            liveUrl: "#",
-            githubUrl: "#",
-            status: "development",
-            isInternal: false
+            title: "HTML Email Template",
+            description: "Responsive HTML email template designed for Preply. Built with table-based layout for maximum email client compatibility. Features optimized inline CSS, fallback fonts, and tested across major email clients (Gmail, Outlook, Apple Mail). Includes mobile-responsive design with conditional comments for Outlook-specific rendering.",
+            techStack: ["HTML", "CSS", "Email Design", "Responsive Design"],
+            video: demoPreplyEmail,
+            liveUrl: "https://jordymurgueitio.github.io/preply-email-template/",
+            githubUrl: "https://github.com/JordyMurgueitio/preply-email-template",
+            status: "production",
+            isInternal: true
         }
     ];
 
@@ -190,7 +191,6 @@ function Projects() {
             </div>
             
             <div className="projects-cta">
-                <p>💼 Professional tools + 🚀 Personal projects = Full-stack experience</p>
                 <a href="https://github.com/JordyMurgueitio" target="_blank" rel="noopener noreferrer" className="view-all-btn">
                     <i className="fa fa-github"></i>
                     <span>More on GitHub</span>
