@@ -9,7 +9,7 @@ function About () {
                     <div className='hero-greeting'>
                         <span className='greeting-text'>Hello, I'm</span>
                         <h1 className='hero-name'>Jordy Murgueitio</h1>
-                        <h2 className='hero-title'>Front-End Developer</h2>
+                        <h2 className='hero-title'>Support Developer</h2>
                     </div>
                     <p className='hero-description'>
                         Developer with over a year of experience building web applications, internal tools, and email templates. 

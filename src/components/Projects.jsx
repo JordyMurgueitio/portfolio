@@ -2,6 +2,7 @@ import { useState } from 'react';
 import weather from '../assets/weather-app.png'
 import demoSpecie from '../assets/demo-specie.mp4'
 import demoSoReplica from '../assets/demo-so-replica.mp4'
+import demoCodeSnippet from '../assets/demo-code-snippet.mp4'
 import './Projects.css';
 
 function Projects() {
@@ -33,20 +34,19 @@ function Projects() {
             isInternal: true,
             impact: ["Less escalations to the tech team", "No human error (link was manually created before)", "No order duplications"]
         },
-        {
-            title: "Code Snippet Manager",
-            description: "Internal tool for managing and organizing code snippets across projects. Built with Vue.js and Express.js, it allows users to create, edit, and delete snippets, as well as categorize them for easy retrieval. Features include a search function, user authentication, and integration with existing project repositories.",
-            techStack: ["Vue.js", "Express.js", "MongoDB", "Node.js"],
-            image: null,
-            video: null,
-            liveUrl: null,
-            githubUrl: null,
-            status: "production",
-            isInternal: true,
-            impact: ["50% less manual reporting", "Real-time metrics", "Cross-team visibility"]
-        },
         
         // PERSONAL PROJECTS
+        {
+            title: "Code Snippet Manager",
+            description: "Personal code snippet library built with React and Vite. Used for personal documentation. Supports multi-code-block snippets, real-time search/filter, category grouping, and list/grid view modes. Includes local storage persistence and JSON export/import functionality. Features a clean, minimal UI with dark-themed code blocks and responsive design.",
+            techStack: ["HTML", "CSS", "JavaScript", "React"],
+            image: null,
+            video: demoCodeSnippet,
+            liveUrl: 'https://jordymurgueitio.github.io/code-snippet-app/',
+            githubUrl: 'https://github.com/JordyMurgueitio/code-snippet-app',
+            status: "live",
+            isInternal: false
+        },
         {
             title: "Weather App",
             description: "Real-time weather application with location-based forecasts. Clean UI with dynamic weather data and responsive design.",
