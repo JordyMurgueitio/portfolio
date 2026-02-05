@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import demoSpecie from '../assets/demo-specie.mp4'
+import demoSpecie from '../assets/new-species-demo.mp4'
 import demoSoReplica from '../assets/demo-so-replica.mp4'
 import demoCodeSnippet from '../assets/demo-code-snippet.mp4'
 import demoWeatherApp from '../assets/demo-weather-app.mp4'
 import demoPreplyEmail from '../assets/demo-preply-email.mp4'
+import demoAlianzaApi from '../assets/alianza-api-demo.mp4'
+import demoCsc from '../assets/csc-demo.mp4'
 import './Projects.css';
 
 function Projects() {
@@ -32,6 +34,28 @@ function Projects() {
             status: "production",
             isInternal: true,
             impact: ["Less escalations to the tech team", "No human error (link was manually created before)", "No order duplications"]
+        },
+        {
+            title: "DB Data Retrieval Tool",
+            description: "Internal tool that allows customer support agents to search and retrieve actual database data from each farm by PO number or date. Built with Vue.js frontend and Express.js backend, the tool provides direct visibility into production database records, enabling agents to quickly access critical information without requiring engineering support.",
+            techStack: ["Vue.js", "Express.js", "SQL"],
+            video: demoAlianzaApi,
+            liveUrl: null,
+            githubUrl: null,
+            status: "production",
+            isInternal: true,
+            impact: ["Important data visible for customer support agents", "Less escalations to tech team", "Faster resolution time"]
+        },
+        {
+            title: "Customer Score Card",
+            description: "Internal dashboard that displays relevant data for each company. Built with Vue.js and Express.js, the tool provides a centralized place for trainees and managers to view up-to-date, company-specific metrics and information. Features real-time data retrieval from multiple database sources.",
+            techStack: ["Vue.js", "Express.js", "SQL"],
+            video: demoCsc,
+            liveUrl: null,
+            githubUrl: null,
+            status: "production",
+            isInternal: true,
+            impact: ["Centralized data for trainees and managers", "Real-time company metrics", "Updated and relevant information"]
         },
         {
             title: "Code Snippet Manager",
