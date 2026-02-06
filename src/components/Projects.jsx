@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import demoSpecie from '../assets/new-species-demo.mp4'
 import demoSoReplica from '../assets/demo-so-replica.mp4'
 import demoCodeSnippet from '../assets/demo-code-snippet.mp4'
@@ -10,6 +10,25 @@ import './Projects.css';
 
 function Projects() {
     const [filter, setFilter] = useState('all'); // 'all', 'professional', 'personal'
+    const [showAll, setShowAll] = useState(false); // Control how many projects to show
+    const gridRef = useRef(null);
+
+    const handleLoadMore = () => {
+        if (!showAll) {
+            setShowAll(true);
+            // Smooth scroll to the 5th card after a brief delay to let cards render
+            setTimeout(() => {
+                const cards = gridRef.current?.querySelectorAll('.project-card');
+                if (cards && cards[4]) {
+                    cards[4].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }, 100);
+        } else {
+            setShowAll(false);
+            // Scroll back to top of projects section
+            gridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
 
     const projects = [
         // PROFESSIONAL / INTERNAL TOOLS
@@ -96,6 +115,24 @@ function Projects() {
         return true;
     });
 
+    // Limit displayed projects based on showAll state
+    const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 4);
+    const hasMore = filteredProjects.length > 4;
+
+    // Tech stack icon mapping
+    const techIcons = {
+        "Vue.js": "fab fa-vuejs",
+        "Express.js": "fab fa-node-js",
+        "SQL": "fas fa-database",
+        "HTML": "fab fa-html5",
+        "CSS": "fab fa-css3-alt",
+        "JavaScript": "fab fa-js",
+        "React": "fab fa-react",
+        "Email Design": "fas fa-envelope",
+        "Responsive Design": "fas fa-mobile-alt",
+        "Weather API": "fas fa-cloud"
+    };
+
     return (
         <section id='projects-section'>
             <div className="projects-header">
@@ -124,11 +161,12 @@ function Projects() {
                 </div>
             </div>
 
-            <div className="projects-grid">
-                {filteredProjects.map((project) => (
+            <div className="projects-grid" ref={gridRef}>
+                {displayedProjects.map((project, index) => (
                     <div 
                         key={project.title} 
                         className={`project-card ${project.isInternal ? 'internal-card' : 'personal-card'}`}
+                        style={{ animationDelay: `${index * 0.1}s` }}
                     >
                         {/* Video Section */}
                         {project.video ? (
@@ -184,7 +222,10 @@ function Projects() {
                             {/* Tech Stack */}
                             <div className="card-tech">
                                 {project.techStack.map((tech, idx) => (
-                                    <span key={idx} className="tech-tag">{tech}</span>
+                                    <span key={idx} className="tech-tag">
+                                        {techIcons[tech] && <i className={techIcons[tech]}></i>}
+                                        {tech}
+                                    </span>
                                 ))}
                             </div>
 
@@ -209,6 +250,24 @@ function Projects() {
             </div>
             
             <div className="projects-cta">
+                {hasMore && (
+                    <button 
+                        onClick={handleLoadMore}
+                        className="load-more-btn"
+                    >
+                        {showAll ? (
+                            <>
+                                <i className="fa fa-chevron-up"></i>
+                                <span>Show Less</span>
+                            </>
+                        ) : (
+                            <>
+                                <i className="fa fa-plus-circle"></i>
+                                <span>Load More Projects</span>
+                            </>
+                        )}
+                    </button>
+                )}
                 <a href="https://github.com/JordyMurgueitio" target="_blank" rel="noopener noreferrer" className="view-all-btn">
                     <i className="fa fa-github"></i>
                     <span>More on GitHub</span>
