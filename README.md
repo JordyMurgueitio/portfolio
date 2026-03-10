@@ -1,12 +1,37 @@
-# React + Vite
+# Jordy Murgueitio — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio built with **React** and **Vite**, deployed via GitHub Pages.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React 19 + Vite
+- Vanilla CSS (no UI framework)
 
-## Expanding the ESLint configuration
+## Sections
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **About** — Intro and quick stats
+- **Skills** — Frontend, Backend, and Tools
+- **Experience** — Work history
+- **Projects** — Professional internal tools and personal projects
+- **Contact** — Links and CV download
+
+## Getting Started
+
+```bash
+npm install
+npm run dev
+```
+
+## Deploy
+
+```bash
+npm run deploy
+```
+
+Builds and pushes to the `gh-pages` branch automatically.
+
+## Links
+
+- **Live site:** [jordymurgueitio.github.io/portfolio](https://jordymurgueitio.github.io/portfolio)
+- **GitHub:** [github.com/JordyMurgueitio](https://github.com/JordyMurgueitio)
+- **LinkedIn:** [linkedin.com/in/jordy-murgueitio](https://www.linkedin.com/in/jordy-murgueitio/)
