@@ -1,6 +1,6 @@
 /* PROJECTS SECTION STYLES */
 #projects-section {
-  background: linear-gradient(135deg, #0a5575 0%, #000000 100%);
+  background: linear-gradient(180deg, #000000 0%, #061a24 50%, #0a3347 100%);
   padding: 80px 20px;
   position: relative;
   overflow: hidden;
@@ -13,7 +13,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.1);
+  background: radial-gradient(ellipse at 30% 80%, rgba(0, 212, 255, 0.04) 0%, transparent 60%);
   z-index: 1;
 }
 
@@ -28,17 +28,18 @@
 }
 
 .projects-header h2 {
-  margin: 0 0 15px 0;
+  margin: 0 0 10px 0;
   font-size: 2.8em;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
-.projects-header p {
-  margin: 0;
+.projects-subtitle {
+  margin: 0 auto;
   font-size: 1.1em;
-  color: rgba(255, 255, 255, 0.85);
-  font-style: italic;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 500px;
+  line-height: 1.6;
 }
 
 /* FILTER TABS */
@@ -97,15 +98,16 @@
 
 /* PROJECT CARD */
 .project-card {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 16px;
   overflow: hidden;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-              box-shadow 0.4s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+              box-shadow 0.4s ease,
+              border-color 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   opacity: 0;
   animation: fadeInUp 0.6s ease-out forwards;
-  transform-style: preserve-3d;
+  position: relative;
 }
 
 @keyframes fadeInUp {
@@ -120,27 +122,61 @@
 }
 
 .project-card:hover {
-  transform: translateY(-8px) rotateX(2deg) rotateY(-2deg);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4),
-              0 0 40px rgba(0, 212, 255, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4),
+              0 0 40px rgba(0, 212, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* Featured card styling */
+.featured-card {
+  border-color: rgba(0, 212, 255, 0.15);
+}
+
+.featured-card:hover {
+  border-color: rgba(0, 212, 255, 0.35);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4),
+              0 0 50px rgba(0, 212, 255, 0.15);
+}
+
+.featured-ribbon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  padding: 5px 14px;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.25) 0%, rgba(0, 212, 255, 0.12) 100%);
+  border: 1px solid rgba(0, 212, 255, 0.35);
+  border-radius: 20px;
+  color: #00d4ff;
+  font-size: 0.75em;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  backdrop-filter: blur(10px);
+}
+
+.featured-ribbon i {
+  font-size: 0.85em;
 }
 
 .internal-card {
-  border-left: 3px solid #00d4ff;
+  border-top: 3px solid rgba(0, 212, 255, 0.4);
 }
 
 .internal-card:hover {
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4),
-              0 0 40px rgba(0, 212, 255, 0.3);
+  border-top-color: #00d4ff;
 }
 
 .personal-card {
-  border-left: 3px solid #4ade80;
+  border-top: 3px solid rgba(74, 222, 128, 0.4);
 }
 
 .personal-card:hover {
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4),
-              0 0 40px rgba(74, 222, 128, 0.25);
+  border-top-color: #4ade80;
 }
 
 /* CARD VIDEO */
@@ -152,12 +188,45 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  position: relative;
 }
 
 .card-video video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .card-video video {
+  transform: scale(1.04);
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.video-overlay i {
+  font-size: 3em;
+  color: rgba(255, 255, 255, 0.85);
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .video-overlay {
+  opacity: 1;
+}
+
+.project-card:hover .video-overlay i {
+  transform: scale(1.1);
 }
 
 .card-video.placeholder {
@@ -185,9 +254,24 @@
   margin-bottom: 15px;
 }
 
+.card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.project-number {
+  color: rgba(0, 212, 255, 0.5);
+  font-size: 0.85em;
+  font-weight: 700;
+  font-family: 'Fira Code', monospace;
+  flex-shrink: 0;
+}
+
 .card-header h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.5em;
+  margin: 0;
+  font-size: 1.4em;
   font-weight: 700;
   color: #fff;
   letter-spacing: -0.02em;

@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import demoSpecie from '../assets/new-species-demo.mp4'
 import demoSoReplica from '../assets/demo-so-replica.mp4'
 import demoCodeSnippet from '../assets/demo-code-snippet.mp4'
@@ -9,9 +10,17 @@ import demoCsc from '../assets/csc-demo.mp4'
 import './Projects.css';
 
 function Projects() {
-    const [filter, setFilter] = useState('all'); // 'all', 'professional', 'personal'
-    const [showAll, setShowAll] = useState(false); // Control how many projects to show
+    const [filter, setFilter] = useState('all');
+    const [showAll, setShowAll] = useState(false);
     const gridRef = useRef(null);
+    const [headerRef, headerVisible] = useScrollReveal();
+    const [projectsRef, projectsVisible] = useScrollReveal({ threshold: 0.05 });
+
+    // Combine refs for the grid
+    const setGridRefs = (el) => {
+        gridRef.current = el;
+        projectsRef.current = el;
+    };
 
     const handleLoadMore = () => {
         if (!showAll) {
@@ -37,10 +46,11 @@ function Projects() {
             description: "Developed an internal feature that allows support agents to create and manage farm-related data (species, colors, warehouses, airlines) directly in the system without needing engineering escalation. Built with Vue.js on the frontend and Express.js on the backend the tool queries multiple database tables, includes validation to prevent duplicate records, and ensures data integrity.",
             techStack: ["Vue.js", "Express.js", "SQL"],
             video: demoSpecie,
-            liveUrl: null, // Can't share - internal tool
-            githubUrl: null, // Can't share - proprietary code
+            liveUrl: null,
+            githubUrl: null,
             status: "production",
             isInternal: true,
+            isFeatured: true,
             impact: ["Faster resolution time", "Less escalations to the tech team", "Real-time updates"]
         },
         {
@@ -52,6 +62,7 @@ function Projects() {
             githubUrl: null,
             status: "production",
             isInternal: true,
+            isFeatured: true,
             impact: ["Less escalations to the tech team", "No human error (link was manually created before)", "No order duplications"]
         },
         {
@@ -63,6 +74,7 @@ function Projects() {
             githubUrl: null,
             status: "production",
             isInternal: true,
+            isFeatured: false,
             impact: ["Important data visible for customer support agents", "Less escalations to tech team", "Faster resolution time"]
         },
         {
@@ -74,6 +86,7 @@ function Projects() {
             githubUrl: null,
             status: "production",
             isInternal: true,
+            isFeatured: false,
             impact: ["Centralized data for trainees and managers", "Real-time company metrics", "Updated and relevant information"]
         },
         {
@@ -84,7 +97,8 @@ function Projects() {
             liveUrl: 'https://jordymurgueitio.github.io/code-snippet-app/',
             githubUrl: 'https://github.com/JordyMurgueitio/code-snippet-app',
             status: "live",
-            isInternal: false
+            isInternal: false,
+            isFeatured: true
         },
         {
             title: "HTML Email Template",
@@ -94,7 +108,8 @@ function Projects() {
             liveUrl: null,
             githubUrl: null,
             status: "production",
-            isInternal: true
+            isInternal: true,
+            isFeatured: false
         },
         {
             title: "Weather App",
@@ -104,7 +119,8 @@ function Projects() {
             liveUrl: "https://jordymurgueitio.github.io/weather-app/",
             githubUrl: "https://github.com/JordyMurgueitio/weather-app",
             status: "live",
-            isInternal: false
+            isInternal: false,
+            isFeatured: false
         }
     ];
 
@@ -135,8 +151,10 @@ function Projects() {
 
     return (
         <section id='projects-section'>
-            <div className="projects-header">
+            <div ref={headerRef} className={`projects-header scroll-reveal ${headerVisible ? 'visible' : ''}`}>
+                <span className="section-label">What I've Built</span>
                 <h2>Projects</h2>
+                <p className="projects-subtitle">Production tools and personal projects that solve real problems.</p>
                 
                 {/* Filter Tabs */}
                 <div className="project-filters">
@@ -161,13 +179,20 @@ function Projects() {
                 </div>
             </div>
 
-            <div className="projects-grid" ref={gridRef}>
+            <div ref={setGridRefs} className={`projects-grid scroll-reveal ${projectsVisible ? 'visible' : ''}`}>
                 {displayedProjects.map((project, index) => (
                     <div 
                         key={project.title} 
-                        className={`project-card ${project.isInternal ? 'internal-card' : 'personal-card'}`}
+                        className={`project-card ${project.isInternal ? 'internal-card' : 'personal-card'} ${project.isFeatured ? 'featured-card' : ''}`}
                         style={{ animationDelay: `${index * 0.1}s` }}
                     >
+                        {/* Featured ribbon */}
+                        {project.isFeatured && (
+                            <div className="featured-ribbon">
+                                <i className="fa-solid fa-star"></i> Featured
+                            </div>
+                        )}
+
                         {/* Video Section */}
                         {project.video ? (
                             <div className="card-video">
@@ -179,6 +204,9 @@ function Projects() {
                                 >
                                     <source src={project.video} type="video/mp4" />
                                 </video>
+                                <div className="video-overlay">
+                                    <i className="fa fa-play-circle"></i>
+                                </div>
                             </div>
                         ) : (
                             <div className="card-video placeholder">
@@ -190,7 +218,10 @@ function Projects() {
                         {/* Content Section */}
                         <div className="card-content">
                             <div className="card-header">
-                                <h3>{project.title}</h3>
+                                <div className="card-title-row">
+                                    <span className="project-number">#{index + 1}</span>
+                                    <h3>{project.title}</h3>
+                                </div>
                                 <div className="card-badges">
                                     <span className={`status-badge ${project.status}`}>
                                         {project.status === 'production' ? '● Production' : '● Live'}
