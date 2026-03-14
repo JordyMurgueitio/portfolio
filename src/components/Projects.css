@@ -235,6 +235,16 @@
   color: rgba(255, 255, 255, 0.4);
 }
 
+.video-placeholder-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 1.5em;
+}
+
 .card-video.placeholder i {
   font-size: 2em;
 }
@@ -331,6 +341,230 @@
   margin: 15px 0;
   font-size: 0.95em;
   letter-spacing: 0.01em;
+}
+
+/* ========== PROBLEM → SOLUTION DISPLAY ========== */
+.card-problem-solution {
+  margin: 12px 0 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ps-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.ps-row p {
+  margin: 0;
+  font-size: 0.9em;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.ps-label {
+  flex-shrink: 0;
+  font-size: 0.65em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-top: 3px;
+}
+
+.ps-label--problem {
+  background: rgba(255, 95, 87, 0.15);
+  color: #ff8a82;
+  border: 1px solid rgba(255, 95, 87, 0.2);
+}
+
+.ps-label--solution {
+  background: rgba(74, 222, 128, 0.12);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.2);
+}
+
+/* ========== CARD ACTIONS ========== */
+.card-actions {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.case-study-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(102, 234, 188, 0.1));
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 8px;
+  color: #00d4ff;
+  font-weight: 600;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.case-study-btn:hover {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.25), rgba(102, 234, 188, 0.15));
+  border-color: rgba(0, 212, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 212, 255, 0.2);
+}
+
+/* ========== CASE STUDY MODAL ========== */
+.case-study-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.case-study-modal {
+  background: linear-gradient(180deg, #0d1b2a 0%, #0a1520 100%);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 20px;
+  max-width: 700px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  animation: modalSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.modal-header {
+  padding: 30px 30px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.modal-label {
+  color: #00d4ff;
+  font-size: 0.8em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.modal-header h3 {
+  color: #fff;
+  font-size: 1.6em;
+  margin: 8px 0 14px;
+  font-weight: 700;
+}
+
+.modal-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.modal-body {
+  padding: 24px 30px 30px;
+}
+
+.cs-section {
+  margin-bottom: 24px;
+}
+
+.cs-section h4 {
+  color: #fff;
+  font-size: 1.05em;
+  margin: 0 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cs-section h4 i {
+  color: #00d4ff;
+  font-size: 0.9em;
+}
+
+.cs-section p {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+  margin: 0;
+  font-size: 0.95em;
+}
+
+.cs-architecture {
+  padding: 14px 18px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  border-radius: 10px;
+  color: #00d4ff;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.85em;
+  line-height: 1.6;
+}
+
+.cs-results {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cs-results li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+.cs-results li i {
+  color: #4ade80;
+  margin-top: 3px;
+  flex-shrink: 0;
 }
 
 /* CARD IMPACT */

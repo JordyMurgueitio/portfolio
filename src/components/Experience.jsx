@@ -11,11 +11,23 @@ function Experience() {
             company: "Current Position",
             period: "Present",
             isCurrent: true,
-            description: "Building internal tools and applications using Vue.js and Express.js. Responsible for database querying to resolve customer issues, debugging existing code, and maintaining system reliability. Collaborate with cross-functional teams to identify root causes and validate fixes.",
+            description: "I build the internal tools my team actually needs. When support agents were spending 15+ minutes per data lookup across multiple systems, I built self-service tools that let them find answers in seconds — no engineering escalation required.",
             highlights: [
-                "Built 4+ production internal tools from scratch",
-                "Reduced support escalations to engineering team",
-                "Improved resolution time with self-service data tools"
+                {
+                    problem: "Agents manually searched 3+ systems to find order data",
+                    action: "Built a DB retrieval tool with Express.js + SQL that searches by PO or date",
+                    result: "Reduced lookup time from ~15 min to under 30 seconds"
+                },
+                {
+                    problem: "Order replication required engineers to manually create database links",
+                    action: "Built a self-service replication tool with safety validations and audit logging",
+                    result: "Eliminated manual link creation and prevented duplicate orders"
+                },
+                {
+                    problem: "New data entries (species, colors, warehouses) required engineering tickets",
+                    action: "Built a creation tool with duplicate detection and real-time validation",
+                    result: "Support team became self-sufficient — ~40% fewer escalations to engineering"
+                }
             ],
             technologies: ["Vue.js", "Express.js", "SQL", "JavaScript", "Debugging", "AWS"]
         },
@@ -24,11 +36,23 @@ function Experience() {
             company: "CRM Team",
             period: "1+ Year",
             isCurrent: false,
-            description: "Developed responsive HTML email templates for marketing campaigns and customer communications. Worked closely with the CRM team to implement email automation workflows, ensuring cross-client compatibility and optimal rendering across different email platforms.",
+            description: "Owned the email template pipeline for the entire marketing team. Took broken, inconsistent email layouts and turned them into a reliable, tested system that worked across every major email client.",
             highlights: [
-                "Built email templates used across all marketing campaigns",
-                "Ensured cross-client compatibility (Gmail, Outlook, Apple Mail)",
-                "Implemented automation workflows with Braze"
+                {
+                    problem: "Email templates broke on Outlook and rendered inconsistently across clients",
+                    action: "Rebuilt templates with table-based layouts and conditional comments for Outlook",
+                    result: "Achieved consistent rendering across Gmail, Outlook, and Apple Mail"
+                },
+                {
+                    problem: "Marketing team manually sent each campaign — slow and error-prone",
+                    action: "Implemented Braze automation workflows with Liquid templating",
+                    result: "Automated campaign delivery, reducing manual work by hours per week"
+                },
+                {
+                    problem: "No mobile-responsive email templates existed",
+                    action: "Designed and built responsive templates used across all campaigns",
+                    result: "Templates adopted company-wide for all marketing communications"
+                }
             ],
             technologies: ["HTML", "CSS", "Liquid", "Email Development", "Braze", "Responsive Design"]
         }
@@ -64,19 +88,29 @@ function Experience() {
                             </div>
                             <p className="experience-description">{exp.description}</p>
                             
-                            {/* Key highlights */}
+                            {/* Key highlights — Problem → Action → Result */}
                             <div className="experience-highlights">
                                 <span className="highlights-label">
                                     <i className="fa-solid fa-trophy"></i> Key Achievements
                                 </span>
-                                <ul>
-                                    {exp.highlights.map((highlight, hIdx) => (
-                                        <li key={hIdx}>
-                                            <i className="fa fa-check-circle"></i>
-                                            <span>{highlight}</span>
-                                        </li>
+                                <div className="par-list">
+                                    {exp.highlights.map((h, hIdx) => (
+                                        <div key={hIdx} className="par-item">
+                                            <div className="par-row par-problem">
+                                                <span className="par-tag">Problem</span>
+                                                <span>{h.problem}</span>
+                                            </div>
+                                            <div className="par-row par-action">
+                                                <span className="par-tag">Action</span>
+                                                <span>{h.action}</span>
+                                            </div>
+                                            <div className="par-row par-result">
+                                                <span className="par-tag">Result</span>
+                                                <span>{h.result}</span>
+                                            </div>
+                                        </div>
                                     ))}
-                                </ul>
+                                </div>
                             </div>
 
                             <div className="experience-technologies">
