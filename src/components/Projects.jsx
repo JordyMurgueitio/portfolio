@@ -9,12 +9,13 @@ import demoAlianzaApi from '../assets/alianza-api-demo.mp4'
 import demoCsc from '../assets/csc-demo.mp4'
 import './Projects.css';
 
-function LazyVideo({ src }) {
+function LazyVideo({ src, isNear }) {
     const containerRef = useRef(null);
     const videoRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
+        if (!isNear) return;
         const el = containerRef.current;
         if (!el) return;
         const observer = new IntersectionObserver(
@@ -28,7 +29,7 @@ function LazyVideo({ src }) {
         );
         observer.observe(el);
         return () => observer.disconnect();
-    }, []);
+    }, [isNear]);
 
     const handleMouseEnter = useCallback(() => {
         videoRef.current?.play().catch(() => {});
@@ -46,7 +47,7 @@ function LazyVideo({ src }) {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            {isVisible ? (
+            {isNear && isVisible ? (
                 <video ref={videoRef} loop muted playsInline preload="metadata">
                     <source src={src} type="video/mp4" />
                 </video>
@@ -63,33 +64,11 @@ function LazyVideo({ src }) {
 }
 
 function Projects() {
-    const [filter, setFilter] = useState('all');
-    const [showAll, setShowAll] = useState(false);
+    const [currentIndex, setCurrentIndex] = useState(0);
     const [expandedProject, setExpandedProject] = useState(null);
-    const gridRef = useRef(null);
+    const touchStartX = useRef(null);
     const [headerRef, headerVisible] = useScrollReveal();
     const [projectsRef, projectsVisible] = useScrollReveal({ threshold: 0.05 });
-
-    // Combine refs for the grid
-    const setGridRefs = (el) => {
-        gridRef.current = el;
-        projectsRef.current = el;
-    };
-
-    const handleLoadMore = () => {
-        if (!showAll) {
-            setShowAll(true);
-            setTimeout(() => {
-                const cards = gridRef.current?.querySelectorAll('.project-card');
-                if (cards && cards[4]) {
-                    cards[4].scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            }, 100);
-        } else {
-            setShowAll(false);
-            gridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    };
 
     const projects = [
         // PROFESSIONAL / INTERNAL TOOLS
@@ -204,16 +183,17 @@ function Projects() {
         }
     ];
 
-    const filteredProjects = projects.filter(project => {
-        if (filter === 'all') return true;
-        if (filter === 'professional') return project.isInternal;
-        if (filter === 'personal') return !project.isInternal;
-        return true;
-    });
+    const goPrev = () => setCurrentIndex(i => (i === 0 ? projects.length - 1 : i - 1));
+    const goNext = () => setCurrentIndex(i => (i === projects.length - 1 ? 0 : i + 1));
+    const goTo = (idx) => setCurrentIndex(idx);
 
-    // Limit displayed projects based on showAll state
-    const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 4);
-    const hasMore = filteredProjects.length > 4;
+    const handleTouchStart = (e) => { touchStartX.current = e.touches[0].clientX; };
+    const handleTouchEnd = (e) => {
+        if (touchStartX.current === null) return;
+        const delta = touchStartX.current - e.changedTouches[0].clientX;
+        if (Math.abs(delta) > 50) delta > 0 ? goNext() : goPrev();
+        touchStartX.current = null;
+    };
 
     // Tech stack icon mapping
     const techIcons = {
@@ -235,162 +215,150 @@ function Projects() {
                 <span className="section-label">What I've Built</span>
                 <h2>Projects</h2>
                 <p className="projects-subtitle">Production tools and personal projects that solve real problems.</p>
-                
-                {/* Filter Tabs */}
-                <div className="project-filters">
-                    <button 
-                        className={`filter-btn ${filter === 'all' ? 'active' : ''}`}
-                        onClick={() => setFilter('all')}
-                    >
-                        All ({projects.length})
-                    </button>
-                    <button 
-                        className={`filter-btn ${filter === 'professional' ? 'active' : ''}`}
-                        onClick={() => setFilter('professional')}
-                    >
-                        <i className="fa fa-briefcase"></i> Professional ({projects.filter(p => p.isInternal).length})
-                    </button>
-                    <button 
-                        className={`filter-btn ${filter === 'personal' ? 'active' : ''}`}
-                        onClick={() => setFilter('personal')}
-                    >
-                        <i className="fa fa-code"></i> Personal ({projects.filter(p => !p.isInternal).length})
-                    </button>
-                </div>
             </div>
 
-            <div ref={setGridRefs} className={`projects-grid scroll-reveal ${projectsVisible ? 'visible' : ''}`}>
-                {displayedProjects.map((project, index) => (
-                    <div 
-                        key={project.title} 
-                        className={`project-card ${project.isInternal ? 'internal-card' : 'personal-card'} ${project.isFeatured ? 'featured-card' : ''}`}
-                        style={{ animationDelay: `${index * 0.1}s` }}
+            <div className={`carousel-nav scroll-reveal ${projectsVisible ? 'visible' : ''}`} ref={projectsRef}>
+                <button className="carousel-arrow carousel-arrow--prev" onClick={goPrev} aria-label="Previous project">
+                    <i className="fa fa-chevron-left"></i>
+                </button>
+
+                <div
+                    className="carousel-wrapper"
+                    onTouchStart={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
+                >
+                    <div
+                        className="carousel-track"
+                        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
                     >
-                        {/* Featured ribbon */}
-                        {project.isFeatured && (
-                            <div className="featured-ribbon">
-                                <i className="fa-solid fa-star"></i> Featured
-                            </div>
-                        )}
-
-                        {/* Video Section */}
-                        {project.video ? (
-                            <LazyVideo src={project.video} />
-                        ) : (
-                            <div className="card-video placeholder">
-                                <i className="fa fa-lock"></i>
-                                <p>NDA Protected</p>
-                            </div>
-                        )}
-
-                        {/* Content Section */}
-                        <div className="card-content">
-                            <div className="card-header">
-                                <div className="card-title-row">
-                                    <span className="project-number">#{index + 1}</span>
-                                    <h3>{project.title}</h3>
-                                </div>
-                                <div className="card-badges">
-                                    <span className={`status-badge ${project.status}`}>
-                                        {project.status === 'production' ? '● Production' : '● Live'}
-                                    </span>
-                                    {project.isInternal && (
-                                        <span className="type-badge">
-                                            <i className="fa fa-briefcase"></i> Professional
-                                        </span>
-                                    )}
-                                </div>
-                            </div>
-
-                            {/* Problem → Solution (new) */}
-                            <div className="card-problem-solution">
-                                <div className="ps-row">
-                                    <span className="ps-label ps-label--problem">Problem</span>
-                                    <p>{project.problem}</p>
-                                </div>
-                                <div className="ps-row">
-                                    <span className="ps-label ps-label--solution">Solution</span>
-                                    <p>{project.solution}</p>
-                                </div>
-                            </div>
-
-                            {/* Impact Section */}
-                            {project.impact && (
-                                <div className="card-impact">
-                                    <strong>Key Impact:</strong>
-                                    <ul>
-                                        {project.impact.map((item, idx) => (
-                                            <li key={idx}>
-                                                <i className="fa fa-check-circle"></i> {item}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            )}
-
-                            {/* Tech Stack */}
-                            <div className="card-tech">
-                                {project.techStack.map((tech, idx) => (
-                                    <span key={idx} className="tech-tag">
-                                        {techIcons[tech] && <i className={techIcons[tech]}></i>}
-                                        {tech}
-                                    </span>
-                                ))}
-                            </div>
-
-                            {/* Links */}
-                            <div className="card-actions">
-                                {project.caseStudy && (
-                                    <button 
-                                        className="case-study-btn"
-                                        onClick={() => setExpandedProject(project)}
-                                    >
-                                        <i className="fa fa-book-open"></i> Read Case Study
-                                    </button>
-                                )}
-                                {project.isInternal ? (
-                                    <div className="card-nda">
-                                        <i className="fa fa-lock"></i> Code unavailable per NDA
+                    {projects.map((project, index) => (
+                        <div key={project.title} className="carousel-slide">
+                            <div className={`project-card ${project.isInternal ? 'internal-card' : 'personal-card'} ${project.isFeatured ? 'featured-card' : ''}`}>
+                                {/* Featured ribbon */}
+                                {project.isFeatured && (
+                                    <div className="featured-ribbon">
+                                        <i className="fa-solid fa-star"></i> Featured
                                     </div>
+                                )}
+
+                                {/* Video Section */}
+                                {project.video ? (
+                                    <LazyVideo src={project.video} isNear={Math.abs(index - currentIndex) <= 1} />
                                 ) : (
-                                    <div className="card-links">
-                                        {project.liveUrl && (
-                                            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                                                <i className="fa fa-external-link"></i> Live Demo
-                                            </a>
-                                        )}
-                                        {project.githubUrl && (
-                                            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                                                <i className="fa fa-github"></i> View Code
-                                            </a>
-                                        )}
+                                    <div className="card-video placeholder">
+                                        <i className="fa fa-lock"></i>
+                                        <p>NDA Protected</p>
                                     </div>
                                 )}
+
+                                {/* Content Section */}
+                                <div className="card-content">
+                                    <div className="card-header">
+                                        <div className="card-title-row">
+                                            <span className="project-number">#{index + 1}</span>
+                                            <h3>{project.title}</h3>
+                                        </div>
+                                        <div className="card-badges">
+                                            <span className={`status-badge ${project.status}`}>
+                                                {project.status === 'production' ? '● Production' : '● Live'}
+                                            </span>
+                                            {project.isInternal && (
+                                                <span className="type-badge">
+                                                    <i className="fa fa-briefcase"></i> Professional
+                                                </span>
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    {/* Problem → Solution */}
+                                    <div className="card-problem-solution">
+                                        <div className="ps-row">
+                                            <span className="ps-label ps-label--problem">Problem</span>
+                                            <p>{project.problem}</p>
+                                        </div>
+                                        <div className="ps-row">
+                                            <span className="ps-label ps-label--solution">Solution</span>
+                                            <p>{project.solution}</p>
+                                        </div>
+                                    </div>
+
+                                    {/* Impact Section */}
+                                    {project.impact && (
+                                        <div className="card-impact">
+                                            <strong>Key Impact:</strong>
+                                            <ul>
+                                                {project.impact.map((item, idx) => (
+                                                    <li key={idx}>
+                                                        <i className="fa fa-check-circle"></i> {item}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    )}
+
+                                    {/* Tech Stack */}
+                                    <div className="card-tech">
+                                        {project.techStack.map((tech, idx) => (
+                                            <span key={idx} className="tech-tag">
+                                                {techIcons[tech] && <i className={techIcons[tech]}></i>}
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
+
+                                    {/* Links */}
+                                    <div className="card-actions">
+                                        {project.caseStudy && (
+                                            <button
+                                                className="case-study-btn"
+                                                onClick={() => setExpandedProject(project)}
+                                            >
+                                                <i className="fa fa-book-open"></i> Read Case Study
+                                            </button>
+                                        )}
+                                        {project.isInternal ? (
+                                            <div className="card-nda">
+                                                <i className="fa fa-lock"></i> Code unavailable per NDA
+                                            </div>
+                                        ) : (
+                                            <div className="card-links">
+                                                {project.liveUrl && (
+                                                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                                                        <i className="fa fa-external-link"></i> Live Demo
+                                                    </a>
+                                                )}
+                                                {project.githubUrl && (
+                                                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                                                        <i className="fa fa-github"></i> View Code
+                                                    </a>
+                                                )}
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                    ))}
                     </div>
+                </div>
+
+                <button className="carousel-arrow carousel-arrow--next" onClick={goNext} aria-label="Next project">
+                    <i className="fa fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div className="carousel-dots">
+                {projects.map((_, idx) => (
+                    <button
+                        key={idx}
+                        className={`dot ${idx === currentIndex ? 'active' : ''}`}
+                        onClick={() => goTo(idx)}
+                        aria-label={`Go to project ${idx + 1}`}
+                    />
                 ))}
             </div>
             
             <div className="projects-cta">
-                {hasMore && (
-                    <button 
-                        onClick={handleLoadMore}
-                        className="load-more-btn"
-                    >
-                        {showAll ? (
-                            <>
-                                <i className="fa fa-chevron-up"></i>
-                                <span>Show Less</span>
-                            </>
-                        ) : (
-                            <>
-                                <i className="fa fa-plus-circle"></i>
-                                <span>Load More Projects</span>
-                            </>
-                        )}
-                    </button>
-                )}
                 <a href="https://github.com/JordyMurgueitio" target="_blank" rel="noopener noreferrer" className="view-all-btn">
                     <i className="fa fa-github"></i>
                     <span>More on GitHub</span>
