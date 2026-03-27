@@ -82,7 +82,7 @@ function Contact () {
                 
                 <div className="availability-status">
                     <div className="status-indicator"></div>
-                    <span>Available for new opportunities</span>
+                    <span>Available for Full-Stack, Frontend &amp; Product Engineer roles</span>
                 </div>
 
                 {/* Contact Form */}

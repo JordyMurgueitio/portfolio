@@ -68,6 +68,8 @@ function Header() {
                         className={`hamburger ${isMenuOpen ? 'hamburger-active' : ''}`}
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         aria-label="Toggle navigation"
+                        aria-expanded={isMenuOpen}
+                        aria-controls="main-nav"
                     >
                         <span></span>
                         <span></span>
@@ -75,7 +77,7 @@ function Header() {
                     </button>
                 </div>
 
-                <ul className={`nav-links ${isMenuOpen ? 'nav-open' : ''}`}>
+                <ul id="main-nav" className={`nav-links ${isMenuOpen ? 'nav-open' : ''}`}>
                     <li><a href="#about-section" className={activeSection === 'about-section' ? 'active' : ''} onClick={handleNavClick}>About</a></li>
                     <li><a href="#skills-section" className={activeSection === 'skills-section' ? 'active' : ''} onClick={handleNavClick}>Skills</a></li>
                     <li><a href="#experience-section" className={activeSection === 'experience-section' ? 'active' : ''} onClick={handleNavClick}>Experience</a></li>

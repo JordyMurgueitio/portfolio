@@ -25,23 +25,44 @@ function Skills () {
             icon: "fa-solid fa-server",
             accent: "green",
             skills: [
+                { name: "Node.js", icon: "fa-brands fa-node-js", level: "Intermediate" },
                 { name: "Express.js", icon: "fa-brands fa-node-js", level: "Intermediate" },
-                { name: "SQL", icon: "fa-solid fa-database", level: "Advanced" }
+                { name: "SQL", icon: "fa-solid fa-database", level: "Advanced" },
+                { name: "REST APIs", icon: "fa-solid fa-plug", level: "Intermediate" }
             ]
         },
         {
-            category: "Tools & Platforms",
+            category: "Cloud & Infrastructure",
+            icon: "fa-solid fa-cloud",
+            accent: "purple",
+            skills: [
+                { name: "AWS EC2", icon: "fa-brands fa-aws", level: "Intermediate" },
+                { name: "AWS S3", icon: "fa-brands fa-aws", level: "Intermediate" },
+                { name: "AWS Route53", icon: "fa-brands fa-aws", level: "Intermediate" },
+                { name: "Linux/CLI", icon: "fa-solid fa-terminal", level: "Intermediate" }
+            ]
+        },
+        {
+            category: "AI Development Tools",
+            icon: "fa-solid fa-robot",
+            accent: "pink",
+            skills: [
+                { name: "Claude Code", icon: "fa-solid fa-brain", level: "Advanced" },
+                { name: "Cursor", icon: "fa-solid fa-wand-magic-sparkles", level: "Advanced" },
+                { name: "GitHub Copilot", icon: "fa-solid fa-code", level: "Intermediate" },
+                { name: "ChatGPT", icon: "fa-solid fa-comments", level: "Intermediate" }
+            ]
+        },
+        {
+            category: "Developer Tools",
             icon: "fa-solid fa-toolbox",
             accent: "amber",
             skills: [
                 { name: "Git", icon: "fa-brands fa-git-alt", level: "Advanced" },
                 { name: "GitHub", icon: "fa-brands fa-github", level: "Advanced" },
-                { name: "AWS", icon: "fa-brands fa-aws", level: "Intermediate" },
                 { name: "Postman", icon: "fa-solid fa-rocket", level: "Advanced" },
                 { name: "Jira", icon: "fa-solid fa-tasks", level: "Advanced" },
-                { name: "Figma", icon: "fa-brands fa-figma", level: "Intermediate" },
-                { name: "Intercom", icon: "fa-solid fa-comments", level: "Advanced" },
-                { name: "Braze", icon: "fa-solid fa-envelope", level: "Advanced" }
+                { name: "Figma", icon: "fa-brands fa-figma", level: "Intermediate" }
             ]
         }
     ];

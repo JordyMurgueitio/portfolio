@@ -64,9 +64,7 @@ function LazyVideo({ src, isNear }) {
 }
 
 function Projects() {
-    const [currentIndex, setCurrentIndex] = useState(0);
     const [expandedProject, setExpandedProject] = useState(null);
-    const touchStartX = useRef(null);
     const [headerRef, headerVisible] = useScrollReveal();
     const [projectsRef, projectsVisible] = useScrollReveal({ threshold: 0.05 });
 
@@ -77,7 +75,7 @@ function Projects() {
             problem: "Support agents had to submit engineering tickets to add basic data (species, colors, warehouses) — bottlenecking both teams.",
             solution: "Built a self-service creation tool with real-time validation and duplicate detection using Vue.js and Express.js.",
             description: "Developed an internal feature that allows support agents to create and manage farm-related data (species, colors, warehouses, airlines) directly in the system without needing engineering escalation. Built with Vue.js on the frontend and Express.js on the backend the tool queries multiple database tables, includes validation to prevent duplicate records, and ensures data integrity.",
-            techStack: ["Vue.js", "Express.js", "SQL"],
+            techStack: ["Vue.js", "Node.js", "Express.js", "SQL"],
             video: demoSpecie,
             liveUrl: null,
             githubUrl: null,
@@ -98,7 +96,7 @@ function Projects() {
             problem: "Order replication required engineers to manually create database links — error-prone and caused duplicate orders.",
             solution: "Built a self-service replication tool with safety validations, 7-day date limits, and single-use link enforcement.",
             description: "Developed an internal tool that allows users to replicate orders for a specific farm and a restricted date range. Built with Vue.js and Express.js, the tool enforces multiple safety and validation rules to protect data integrity. Users are limited to a maximum date range of 7 days, and security filters prevent the same replication link from being executed more than once. Each replication action is logged and displayed, allowing the team to track executions and ensure accountability",
-            techStack: ["Vue.js", "Express.js"],
+            techStack: ["Vue.js", "Node.js", "Express.js"],
             video: demoSoReplica,
             liveUrl: null,
             githubUrl: null,
@@ -119,7 +117,7 @@ function Projects() {
             problem: "Support agents spent ~15 minutes per lookup searching across multiple disconnected systems for order data.",
             solution: "Built an Express.js + SQL tool that searches production data by PO number or date, delivering results in seconds.",
             description: "Internal tool that allows customer support agents to search and retrieve actual database data from each farm by PO number or date. Built with Vue.js frontend and Express.js backend, the tool provides direct visibility into production database records, enabling agents to quickly access critical information without requiring engineering support.",
-            techStack: ["Vue.js", "Express.js", "SQL"],
+            techStack: ["Vue.js", "Node.js", "Express.js", "SQL"],
             video: demoAlianzaApi,
             liveUrl: null,
             githubUrl: null,
@@ -133,7 +131,7 @@ function Projects() {
             problem: "Trainees and managers had no centralized place to view company metrics — data was scattered across spreadsheets and tools.",
             solution: "Built an internal dashboard that aggregates real-time company metrics from multiple database sources into one view.",
             description: "Internal dashboard that displays relevant data for each company. Built with Vue.js and Express.js, the tool provides a centralized place for trainees and managers to view up-to-date, company-specific metrics and information. Features real-time data retrieval from multiple database sources.",
-            techStack: ["Vue.js", "Express.js", "SQL"],
+            techStack: ["Vue.js", "Node.js", "Express.js", "SQL"],
             video: demoCsc,
             liveUrl: null,
             githubUrl: null,
@@ -183,21 +181,20 @@ function Projects() {
         }
     ];
 
-    const goPrev = () => setCurrentIndex(i => (i === 0 ? projects.length - 1 : i - 1));
-    const goNext = () => setCurrentIndex(i => (i === projects.length - 1 ? 0 : i + 1));
-    const goTo = (idx) => setCurrentIndex(idx);
-
-    const handleTouchStart = (e) => { touchStartX.current = e.touches[0].clientX; };
-    const handleTouchEnd = (e) => {
-        if (touchStartX.current === null) return;
-        const delta = touchStartX.current - e.changedTouches[0].clientX;
-        if (Math.abs(delta) > 50) delta > 0 ? goNext() : goPrev();
-        touchStartX.current = null;
-    };
-
     // Tech stack icon mapping
+    // Close modal on Escape key
+    useEffect(() => {
+        if (!expandedProject) return;
+        const handleKey = (e) => {
+            if (e.key === 'Escape') setExpandedProject(null);
+        };
+        document.addEventListener('keydown', handleKey);
+        return () => document.removeEventListener('keydown', handleKey);
+    }, [expandedProject]);
+
     const techIcons = {
         "Vue.js": "fab fa-vuejs",
+        "Node.js": "fab fa-node-js",
         "Express.js": "fab fa-node-js",
         "SQL": "fas fa-database",
         "HTML": "fab fa-html5",
@@ -217,23 +214,9 @@ function Projects() {
                 <p className="projects-subtitle">Production tools and personal projects that solve real problems.</p>
             </div>
 
-            <div className={`carousel-nav scroll-reveal ${projectsVisible ? 'visible' : ''}`} ref={projectsRef}>
-                <button className="carousel-arrow carousel-arrow--prev" onClick={goPrev} aria-label="Previous project">
-                    <i className="fa fa-chevron-left"></i>
-                </button>
-
-                <div
-                    className="carousel-wrapper"
-                    onTouchStart={handleTouchStart}
-                    onTouchEnd={handleTouchEnd}
-                >
-                    <div
-                        className="carousel-track"
-                        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-                    >
+            <div ref={projectsRef} className={`projects-grid scroll-reveal ${projectsVisible ? 'visible' : ''}`}>
                     {projects.map((project, index) => (
-                        <div key={project.title} className="carousel-slide">
-                            <div className={`project-card ${project.isInternal ? 'internal-card' : 'personal-card'} ${project.isFeatured ? 'featured-card' : ''}`}>
+                        <div key={project.title} className={`project-card ${project.isInternal ? 'internal-card' : 'personal-card'} ${project.isFeatured ? 'featured-card' : ''} stagger-${Math.min(index + 1, 5)}`}>
                                 {/* Featured ribbon */}
                                 {project.isFeatured && (
                                     <div className="featured-ribbon">
@@ -243,7 +226,7 @@ function Projects() {
 
                                 {/* Video Section */}
                                 {project.video ? (
-                                    <LazyVideo src={project.video} isNear={Math.abs(index - currentIndex) <= 1} />
+                                    <LazyVideo src={project.video} isNear={true} />
                                 ) : (
                                     <div className="card-video placeholder">
                                         <i className="fa fa-lock"></i>
@@ -337,25 +320,7 @@ function Projects() {
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     ))}
-                    </div>
-                </div>
-
-                <button className="carousel-arrow carousel-arrow--next" onClick={goNext} aria-label="Next project">
-                    <i className="fa fa-chevron-right"></i>
-                </button>
-            </div>
-
-            <div className="carousel-dots">
-                {projects.map((_, idx) => (
-                    <button
-                        key={idx}
-                        className={`dot ${idx === currentIndex ? 'active' : ''}`}
-                        onClick={() => goTo(idx)}
-                        aria-label={`Go to project ${idx + 1}`}
-                    />
-                ))}
             </div>
             
             <div className="projects-cta">
@@ -367,14 +332,24 @@ function Projects() {
 
             {/* Case Study Modal */}
             {expandedProject && (
-                <div className="case-study-overlay" onClick={() => setExpandedProject(null)}>
-                    <div className="case-study-modal" onClick={(e) => e.stopPropagation()}>
-                        <button className="modal-close" onClick={() => setExpandedProject(null)}>
-                            <i className="fa fa-times"></i>
+                <div className="case-study-overlay" role="presentation" onClick={() => setExpandedProject(null)}>
+                    <div
+                        className="case-study-modal"
+                        role="dialog"
+                        aria-modal="true"
+                        aria-labelledby="case-study-title"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <button
+                            className="modal-close"
+                            onClick={() => setExpandedProject(null)}
+                            aria-label="Close case study"
+                        >
+                            <i className="fa fa-times" aria-hidden="true"></i>
                         </button>
                         <div className="modal-header">
                             <span className="modal-label">Case Study</span>
-                            <h3>{expandedProject.title}</h3>
+                            <h3 id="case-study-title">{expandedProject.title}</h3>
                             <div className="modal-tech">
                                 {expandedProject.techStack.map((tech, idx) => (
                                     <span key={idx} className="tech-tag">{tech}</span>

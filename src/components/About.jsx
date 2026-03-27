@@ -4,10 +4,10 @@ import './About.css';
 
 function About () {
     const impacts = useMemo(() => [
-        'Built 4+ production tools from scratch',
-        'Reduced support escalations to engineering',
-        'Automated manual workflows for teams',
-        'Ship features across the full stack'
+        'Ship full-stack features from frontend to database',
+        'Built 4+ production tools used by 50+ people',
+        'Leverage AI tools to build and ship faster',
+        'Reduced engineering escalations by 40%'
     ], []);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [displayText, setDisplayText] = useState('');
@@ -36,53 +36,21 @@ function About () {
     }, [displayText, isDeleting, currentIndex, impacts]);
 
     return (
-        <section id='about-section'>
-            {/* Floating particles background */}
-            <div className="hero-particles">
-                <div className="particle particle-1"></div>
-                <div className="particle particle-2"></div>
-                <div className="particle particle-3"></div>
-                <div className="particle particle-4"></div>
-                <div className="particle particle-5"></div>
-                <div className="particle particle-6"></div>
-            </div>
-
+        <section id='about-section' aria-label='About Jordy Murgueitio'>
             <div className='hero-container'>
                 <div className='hero-content'>
-                    {/* Terminal-style hero */}
-                    <div className='terminal-window'>
-                        <div className='terminal-header'>
-                            <div className='terminal-dots'>
-                                <span className='dot dot-red'></span>
-                                <span className='dot dot-yellow'></span>
-                                <span className='dot dot-green'></span>
-                            </div>
-                            <span className='terminal-title'>jordy@portfolio ~ %</span>
-                        </div>
-                        <div className='terminal-body'>
-                            <div className='terminal-line'>
-                                <span className='terminal-prompt'>$</span>
-                                <span className='terminal-command'>whoami</span>
-                            </div>
-                            <div className='terminal-output'>
-                                <h1 className='hero-name'>Jordy Murgueitio</h1>
-                                <p className='hero-role'>Support Developer &amp; Internal Tools Builder</p>
-                            </div>
-                            <div className='terminal-line'>
-                                <span className='terminal-prompt'>$</span>
-                                <span className='terminal-command'>cat impact.log</span>
-                            </div>
-                            <div className='terminal-output terminal-typing'>
-                                <span className="typing-text">{displayText}</span>
-                                <span className="typing-cursor">|</span>
-                            </div>
-                        </div>
+                    <p className='hero-greeting'>Hi, I'm</p>
+                    <h1 className='hero-name'>Jordy Murgueitio</h1>
+                    <p className='hero-role'>Full-Stack Developer</p>
+                    <div className='hero-typewriter' aria-live="polite" aria-atomic="true">
+                        <span className="typing-text">{displayText}</span>
+                        <span className="typing-cursor" aria-hidden="true">|</span>
                     </div>
 
                     <p className='hero-description'>
-                        I build internal tools that make teams faster. Currently shipping production features with 
-                        <strong>Vue.js</strong>, <strong>Express.js</strong>, and <strong>SQL</strong> — turning repetitive 
-                        support problems into self-service solutions that save hours every week.
+                        I build full-stack production tools that solve real problems. Currently shipping features with 
+                        <strong>Vue.js</strong>, <strong>Express.js</strong>, <strong>SQL</strong>, and <strong>AWS</strong> — from 
+                        frontend interfaces to backend APIs and cloud infrastructure, amplified by AI-powered development tools.
                     </p>
                     <div className='hero-actions'>
                         <a href="#contact-section" className='btn btn-primary'>
@@ -109,14 +77,11 @@ function About () {
                     </div>
                 </div>
                 <div className='hero-image-container'>
-                    <div className='image-backdrop'></div>
-                    <div className='image-glow'></div>
-                    <img src={jordyImg} className='hero-image' alt="Jordy Murgueitio - Support Developer & Tools Builder" />
+                    <img src={jordyImg} className='hero-image' alt="Jordy Murgueitio - Full-Stack Developer" />
                 </div>
             </div>
 
-            {/* Scroll indicator */}
-            <div className="scroll-indicator">
+            <div className="scroll-indicator" aria-hidden="true">
                 <div className="scroll-mouse">
                     <div className="scroll-wheel"></div>
                 </div>

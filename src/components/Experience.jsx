@@ -7,11 +7,11 @@ function Experience() {
 
     const experiences = [
         {
-            title: "Support Developer",
-            company: "Current Position",
-            period: "Present",
+            title: "Software Developer",
+            company: "Koronet",
+            period: "9 Months",
             isCurrent: true,
-            description: "I build the internal tools my team actually needs. When support agents were spending 15+ minutes per data lookup across multiple systems, I built self-service tools that let them find answers in seconds — no engineering escalation required.",
+            description: "I build full-stack production tools and features end-to-end — from Vue.js frontends and Express.js APIs to SQL databases and AWS infrastructure. When the team needed faster workflows, I identified bottlenecks, designed solutions, and shipped tools now used daily by 50+ people.",
             highlights: [
                 {
                     problem: "Agents manually searched 3+ systems to find order data",
@@ -27,16 +27,21 @@ function Experience() {
                     problem: "New data entries (species, colors, warehouses) required engineering tickets",
                     action: "Built a creation tool with duplicate detection and real-time validation",
                     result: "Support team became self-sufficient — ~40% fewer escalations to engineering"
+                },
+                {
+                    problem: "Database queries were slow and infrastructure issues lacked visibility",
+                    action: "Monitored DB performance in AWS, optimized SQL indexes, debugged JS and Java services across EC2, Route53, and S3",
+                    result: "Improved query response times and resolved infrastructure bottlenecks independently"
                 }
             ],
-            technologies: ["Vue.js", "Express.js", "SQL", "JavaScript", "Debugging", "AWS"]
+            technologies: ["Vue.js", "Express.js", "SQL", "JavaScript", "AWS", "EC2", "Route53", "S3", "Java", "Debugging"]
         },
         {
-            title: "HTML Developer",
-            company: "CRM Team",
+            title: "Email Developer",
+            company: "Preply",
             period: "1+ Year",
             isCurrent: false,
-            description: "Owned the email template pipeline for the entire marketing team. Took broken, inconsistent email layouts and turned them into a reliable, tested system that worked across every major email client.",
+            description: "Owned the email template development pipeline for the marketing team. Built production-ready, responsive HTML email templates from scratch — solving cross-client rendering issues and automating campaign delivery with Braze and Liquid templating.",
             highlights: [
                 {
                     problem: "Email templates broke on Outlook and rendered inconsistently across clients",

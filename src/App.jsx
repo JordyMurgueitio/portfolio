@@ -12,6 +12,7 @@ import BackToTop from './components/BackToTop'
 function App() {
   return (
     <>
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <Header />
       <About />
       <Skills />
