@@ -38,8 +38,7 @@ function Skills () {
             skills: [
                 { name: "AWS EC2", icon: "fa-brands fa-aws", level: "Intermediate" },
                 { name: "AWS S3", icon: "fa-brands fa-aws", level: "Intermediate" },
-                { name: "AWS Route53", icon: "fa-brands fa-aws", level: "Intermediate" },
-                { name: "Linux/CLI", icon: "fa-solid fa-terminal", level: "Intermediate" }
+                { name: "AWS Route53", icon: "fa-brands fa-aws", level: "Intermediate" }
             ]
         },
         {
@@ -111,9 +110,6 @@ function Skills () {
                                         <i className={skill.icon}></i>
                                     </div>
                                     <p className='skill-name'>{skill.name}</p>
-                                    <span className={`skill-level skill-level--${skill.level.toLowerCase()}`}>
-                                        {skill.level}
-                                    </span>
                                 </div>
                             ))}
                         </div>
