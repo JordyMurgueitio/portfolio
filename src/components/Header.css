@@ -4,7 +4,7 @@
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(7, 50, 69, 0.85);
+  background: rgba(10, 10, 15, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   padding: 12px 20px;
@@ -15,10 +15,10 @@
 }
 
 .header-scrolled {
-  background: rgba(7, 50, 69, 0.95);
+  background: rgba(10, 10, 15, 0.95);
   padding: 8px 20px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-  border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.2);
 }
 
 .nav-container {
@@ -41,7 +41,7 @@
 }
 
 .logo-bracket {
-  color: #00d4ff;
+  color: #60a5fa;
   font-family: 'Fira Code', 'Courier New', monospace;
   font-weight: 400;
 }
@@ -57,7 +57,7 @@
 }
 
 .nav-logo:hover .logo-bracket {
-  color: #66eabc;
+  color: #93c5fd;
 }
 
 /* Hamburger */
@@ -83,9 +83,9 @@
 }
 
 .theme-toggle:hover {
-  background: rgba(0, 212, 255, 0.15);
-  border-color: rgba(0, 212, 255, 0.3);
-  color: #00d4ff;
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: #60a5fa;
 }
 
 .hamburger {
@@ -132,7 +132,7 @@
   width: 70%;
   max-width: 300px;
   height: 100vh;
-  background: rgba(7, 50, 69, 0.98);
+  background: rgba(10, 10, 15, 0.98);
   backdrop-filter: blur(20px);
   display: flex;
   flex-direction: column;
@@ -168,14 +168,14 @@
   transform: translateX(-50%) scaleX(0);
   width: 60%;
   height: 2px;
-  background: linear-gradient(90deg, #00d4ff, #66eabc);
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
   border-radius: 2px;
   transition: transform 0.3s ease;
 }
 
 .nav-links a:hover {
   color: #ffffff;
-  background: rgba(0, 212, 255, 0.1);
+  background: rgba(59, 130, 246, 0.1);
 }
 
 .nav-links a:hover::after {
@@ -183,7 +183,7 @@
 }
 
 .nav-links a.active {
-  color: #00d4ff;
+  color: #60a5fa;
 }
 
 .nav-links a.active::after {
@@ -192,15 +192,15 @@
 
 /* CTA button in nav */
 .nav-cta {
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(102, 234, 188, 0.2)) !important;
-  border: 1px solid rgba(0, 212, 255, 0.3) !important;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(96, 165, 250, 0.2)) !important;
+  border: 1px solid rgba(59, 130, 246, 0.35) !important;
   border-radius: 25px !important;
   padding: 10px 24px !important;
 }
 
 .nav-cta:hover {
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.35), rgba(102, 234, 188, 0.35)) !important;
-  border-color: rgba(0, 212, 255, 0.6) !important;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.35), rgba(96, 165, 250, 0.35)) !important;
+  border-color: rgba(59, 130, 246, 0.65) !important;
 }
 
 /* HEADER STYLES DESKTOP */

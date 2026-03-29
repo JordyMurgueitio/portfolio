@@ -11,9 +11,9 @@
   --text-primary: #f0f0f5;
   --text-secondary: rgba(255, 255, 255, 0.65);
   --text-muted: rgba(255, 255, 255, 0.5);
-  --accent: #6366f1;
-  --accent-light: #818cf8;
-  --accent-glow: rgba(99, 102, 241, 0.15);
+  --accent: #3b82f6;
+  --accent-light: #60a5fa;
+  --accent-glow: rgba(59, 130, 246, 0.15);
   --accent-green: #4ade80;
   --accent-amber: #fbbf24;
   --accent-red: #f87171;
@@ -99,7 +99,7 @@ html {
 
 /* ========== SELECTION STYLE ========== */
 ::selection {
-  background: rgba(99, 102, 241, 0.3);
+  background: rgba(59, 130, 246, 0.3);
   color: #ffffff;
 }
 
@@ -144,9 +144,9 @@ html {
   --text-primary: #1a1a2e;
   --text-secondary: rgba(0, 0, 0, 0.6);
   --text-muted: rgba(0, 0, 0, 0.5);
-  --accent: #4f46e5;
-  --accent-light: #6366f1;
-  --accent-glow: rgba(79, 70, 229, 0.1);
+  --accent: #2563eb;
+  --accent-light: #3b82f6;
+  --accent-glow: rgba(37, 99, 235, 0.1);
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
   --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
   --shadow-lg: 0 12px 40px rgba(0,0,0,0.1);
@@ -158,7 +158,7 @@ html {
 }
 
 [data-theme="light"] ::selection {
-  background: rgba(79, 70, 229, 0.2);
+  background: rgba(37, 99, 235, 0.2);
   color: #1a1a2e;
 }
 
